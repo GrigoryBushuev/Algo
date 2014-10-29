@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingAlgorithms", "MergeSort\SortingAlgorithms.csproj", "{42E6D4DC-4121-4CCF-9C01-50E8D7B4D0B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortUnitTest", "SortUnitTest\SortUnitTest.csproj", "{1163F436-1AD0-4F72-8E3C-51FD31EDA9BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{42E6D4DC-4121-4CCF-9C01-50E8D7B4D0B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42E6D4DC-4121-4CCF-9C01-50E8D7B4D0B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42E6D4DC-4121-4CCF-9C01-50E8D7B4D0B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1163F436-1AD0-4F72-8E3C-51FD31EDA9BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1163F436-1AD0-4F72-8E3C-51FD31EDA9BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1163F436-1AD0-4F72-8E3C-51FD31EDA9BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1163F436-1AD0-4F72-8E3C-51FD31EDA9BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
