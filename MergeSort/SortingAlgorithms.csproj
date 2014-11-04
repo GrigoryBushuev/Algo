@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{42E6D4DC-4121-4CCF-9C01-50E8D7B4D0B9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MergeSort</RootNamespace>
     <AssemblyName>MergeSort</AssemblyName>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InsertationSort.cs" />
+    <Compile Include="ISortingAlgorithm.cs" />
     <Compile Include="MergeSort.cs" />
+    <Compile Include="QuickSort.cs" />
     <Compile Include="SortingAlgorithms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

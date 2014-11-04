@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MergeSort
+namespace SortingAlgorithms
 {
 
 
@@ -15,10 +15,10 @@ namespace MergeSort
 	/// 3. Swapping array and auxiliary array
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
-	public static class MergeSortAlgorithms
+	public class MergeSort<T> : ISortingAlgorithm<T> where T : IComparable<T>
 	{
 
-		private static void Merge<T>(T[] arrayToSort, T[] auxiliaryArray, int lo, int mid, int hi) where T : IComparable<T>
+		private static void Merge(T[] arrayToSort, T[] auxiliaryArray, int lo, int mid, int hi)
 		{
 			int i = lo;
 			int j = mid + 1;
@@ -41,7 +41,7 @@ namespace MergeSort
 			}
 		}
 
-		private static void Sort<T>(T[] arrayToSort, T[] auxiliaryArray, int lo, int hi) where T : IComparable<T>
+		private void Sort(T[] arrayToSort, T[] auxiliaryArray, int lo, int hi)
 		{
 			//3. Check the borders 
 			if (hi <= lo)
@@ -55,15 +55,12 @@ namespace MergeSort
 		}
 
 
-		public static void MergeSort<T>(this T[] arrayToSort) where T : IComparable<T>
+		public void Sort(T[] arrayToSort)
 		{			
 			//1. Create the auxiliary to copy sorted elements
 			var auxiliaryArray = new T[arrayToSort.Length];
 			//2. Run sorting algorithm 
 			Sort(arrayToSort, auxiliaryArray, 0,  arrayToSort.Length - 1);
 		}
-
-
-
 	}
 }
