@@ -18,7 +18,23 @@ namespace SortingAlgorithms
 	public class MergeSort<T> : ISortingAlgorithm<T> where T : IComparable<T>
 	{
 
-		private static void Merge(T[] arrayToSort, T[] auxiliaryArray, int lo, int mid, int hi)
+		private const int insertationSortConst = 5;
+
+		/// <summary>
+		/// Switching to insertion sort for small subarrays (length 15 or less, say) 
+		/// will improve the running time of a typical mergesort implementation by 10 to 15 percent. 
+		/// Why this optimization works is written here
+		/// http://stackoverflow.com/questions/4848387/prove-running-time-of-optimized-mergesort-is-thetank-nlogn-k?rq=1
+		/// In short whe can get T(N) = N*K + N * log(N/K) 
+		/// </summary>
+		private void InsertationSort(T[] arrayToSort, int lo, int hi)
+		{
+			for (int i = lo + 1; i <= hi; i++)
+				for (int j = i; j > lo && arrayToSort[j].CompareTo(arrayToSort[j - 1]) < 0; j--)
+					arrayToSort.Swap(j - 1, j);
+		}
+
+		private void Merge(T[] arrayToSort, T[] auxiliaryArray, int lo, int mid, int hi)
 		{
 			int i = lo;
 			int j = mid + 1;
@@ -47,11 +63,23 @@ namespace SortingAlgorithms
 			if (hi <= lo)
 				return;
 
-			int mid = lo + (hi - lo) / 2;
-			Sort(arrayToSort, auxiliaryArray, lo, mid);
-			Sort(arrayToSort, auxiliaryArray, mid + 1, hi);
-			//Run actual mergin of two subarrays devided by the middle index
-			Merge(arrayToSort, auxiliaryArray, lo, mid, hi);
+			if (hi - lo > insertationSortConst)
+			{
+				int mid = lo + (hi - lo) / 2;
+				Sort(arrayToSort, auxiliaryArray, lo, mid);
+				Sort(arrayToSort, auxiliaryArray, mid + 1, hi);
+
+				//Check whether subarrays is in order so we don't need to merge them
+				if (arrayToSort[mid].CompareTo(arrayToSort[mid + 1]) < 0)
+					return;
+
+				//Run actual mergin of two subarrays devided by the middle index
+				Merge(arrayToSort, auxiliaryArray, lo, mid, hi);
+			}
+			else
+			{
+				InsertationSort(arrayToSort, lo, hi);
+			}
 		}
 
 
