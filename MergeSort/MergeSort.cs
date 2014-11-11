@@ -39,18 +39,12 @@ namespace SortingAlgorithms
 			int i = lo;
 			int j = mid + 1;
 
-			//Copy elements from sorted array to auxiliary array
-			for (int n = lo; n <= hi; n++)
-				auxiliaryArray[n] = arrayToSort[n];
-
 			for (int k = lo; k <= hi; k++ )
 			{
 				//Check bounds before doing actual elements compare
-				if (i > mid)
-					arrayToSort[k] = auxiliaryArray[j++];
-				else if (j > hi)
-					arrayToSort[k] = auxiliaryArray[i++];
-				else if (auxiliaryArray[i].CompareTo(auxiliaryArray[j]) < 0)
+				if (i > mid || j > hi)
+					break;
+				if (auxiliaryArray[i].CompareTo(auxiliaryArray[j]) < 0)
 					arrayToSort[k] = auxiliaryArray[i++];
 				else
 					arrayToSort[k] = auxiliaryArray[j++];
@@ -66,8 +60,8 @@ namespace SortingAlgorithms
 			if (hi - lo > insertationSortConst)
 			{
 				int mid = lo + (hi - lo) / 2;
-				Sort(arrayToSort, auxiliaryArray, lo, mid);
-				Sort(arrayToSort, auxiliaryArray, mid + 1, hi);
+				Sort(auxiliaryArray, arrayToSort, lo, mid);
+				Sort(auxiliaryArray, arrayToSort, mid + 1, hi);
 
 				//Check whether subarrays is in order so we don't need to merge them
 				if (arrayToSort[mid].CompareTo(arrayToSort[mid + 1]) < 0)
@@ -87,6 +81,10 @@ namespace SortingAlgorithms
 		{			
 			//1. Create the auxiliary to copy sorted elements
 			var auxiliaryArray = new T[arrayToSort.Length];
+			//Copy elements from sorted array to auxiliary array
+			for (int i = 0; i < arrayToSort.Length; i++)
+				auxiliaryArray[i] = arrayToSort[i];
+
 			//2. Run sorting algorithm 
 			Sort(arrayToSort, auxiliaryArray, 0,  arrayToSort.Length - 1);
 		}
