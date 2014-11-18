@@ -22,7 +22,6 @@ namespace MergeSort
 				_auxiliaryArray[aIndex] = arrayToSort[aIndex];
 			}
 
-			//5 9 1 8 | 1 5 8 9 
 			for (int k = lo; k <= hi; k++)
 			{
 				if (i > mid)
