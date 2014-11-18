@@ -42,9 +42,11 @@ namespace SortingAlgorithms
 			for (int k = lo; k <= hi; k++ )
 			{
 				//Check bounds before doing actual elements compare
-				if (i > mid || j > hi)
-					break;
-				if (auxiliaryArray[i].CompareTo(auxiliaryArray[j]) < 0)
+				if (i > mid)
+					arrayToSort[k] = auxiliaryArray[j++];
+				else if (j > hi)				
+					arrayToSort[k] = auxiliaryArray[i++];				
+				else if (auxiliaryArray[i].CompareTo(auxiliaryArray[j]) < 0)
 					arrayToSort[k] = auxiliaryArray[i++];
 				else
 					arrayToSort[k] = auxiliaryArray[j++];
