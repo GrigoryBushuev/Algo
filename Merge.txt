@@ -1,0 +1,21 @@
+Sort	arr* 5 9 8  
+	aux** 5 9 8 
+
+
+Sort		arr** 5 9 8 
+
+		aux* 5 9 8
+
+
+Sort				arr 5 9  
+				      8
+				      1
+				      4
+				
+
+
+
+
+
+					
+				     	
