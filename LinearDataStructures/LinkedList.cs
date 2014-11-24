@@ -14,12 +14,6 @@ namespace DataStructures.Linear
 			Value = value;
 		}
 
-		public LinkedListNode(LinkedListNode<T> next, T value)
-		{
-			Next = next;
-			Value = value;
-		}
-
 		public T Value
 		{
 			private set; 
@@ -31,31 +25,61 @@ namespace DataStructures.Linear
 			set; 
 			get;
 		}
+
+		public LinkedListNode<T> Prev
+		{
+			set;
+			get;
+		}
 	}
 
 
 	public class LinkedList<T>
 	{
 
+		private int _count = 0;
 		private LinkedListNode<T> _currentNode;
 
 		public LinkedList(IEnumerable<T> data)
 		{
 			foreach (var node in data)
 			{
-				
+				AddLast(data);
 			}
 		}
 
 		public LinkedListNode<T> AddLast(T data)
 		{
-			var newNode = new LinkedListNode<T>(data);
+			_count++;
+			var newNode = new LinkedListNode(data);
 			if (_currentNode == null)
 				_currentNode = newNode;
 			else
-				_currentNode.Next = newNode;
-
+				_currentNode.Next = newNode;			
 			return newNode;
+		}
+
+
+		public int Count 
+		{
+			get { return _count; }
+		}
+
+		public bool IsEmpty
+		{
+			get 
+			{
+				return _currentNode == null;
+			}
+		}
+
+		public LinkedListNode<T> RemoveLast()
+		{
+			_count--;
+			var result = _currentNode;
+			if (IsEmpty && _currentNode.Prev != null)
+				_currentNode = _currentNode.Prev;
+			return result;
 		}
 
     }
