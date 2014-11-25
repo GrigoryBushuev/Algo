@@ -16,6 +16,15 @@ namespace DataStructures.Linear
 			_linkedList.AddFirst(data);
 		}
 
+		public T Peek()
+		{
+			if (_linkedList.IsEmpty)
+				throw new ArgumentOutOfRangeException();
+
+			var res = _linkedList.First;
+			return res.Value;
+		}
+
 		public T Pop()
 		{
 			if (_linkedList.IsEmpty)

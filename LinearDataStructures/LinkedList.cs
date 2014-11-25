@@ -26,6 +26,16 @@ namespace DataStructures.Linear
 			}
 		}
 
+		public LinkedListNode<T> First
+		{
+			get { return _firstNode; }
+		}
+
+		public LinkedListNode<T> Last
+		{
+			get { return _lastNode; }
+		}
+
 		public int Count
 		{
 			get { return _count; }
@@ -72,6 +82,7 @@ namespace DataStructures.Linear
 
 			var result = _firstNode;
 			_firstNode = _firstNode.Next;
+			_count--;
 			return result;
 		}	
 
