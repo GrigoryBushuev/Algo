@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SortingAlgorithms;
+using DataStructures.Linear;
 
 namespace MergeSort
 {
-	public class LinkedListSort<T> : ISortingAlgorithm<T> where T : IComparable<T>
+	public class LinkedListSort<T> where T : IComparable<T>
 	{
-		public void Sort(IEnumerable<T> arrayToSort)
+		public void Sort(DataStructures.Linear.LinkedList<T> elementsToSort) 
 		{
-			throw new NotImplementedException();
+
 		}
 	}
 }
