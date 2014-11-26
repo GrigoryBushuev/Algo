@@ -38,8 +38,11 @@ namespace SortingAlgorithms
 			Sort(arrayToSort, partitionIndex + 1, hi);
 		}
 
-		public void Sort(T[] arrayToSort)
+		public void Sort(IEnumerable<T> sortingElements)
 		{
+			var arrayToSort = sortingElements as T[];
+			if (arrayToSort == null)
+				throw new InvalidCastException();
 			Sort(arrayToSort, 0, arrayToSort.Length - 1);
 		}
 	}

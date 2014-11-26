@@ -79,8 +79,11 @@ namespace SortingAlgorithms
 		}
 
 
-		public void Sort(T[] arrayToSort)
-		{			
+		public void Sort(IEnumerable<T> sortingElements)
+		{
+			var arrayToSort = sortingElements as T[];
+			if (arrayToSort == null)
+				throw new InvalidCastException();
 			//1. Create the auxiliary to copy sorted elements
 			var auxiliaryArray = new T[arrayToSort.Length];
 			//Copy elements from sorted array to auxiliary array

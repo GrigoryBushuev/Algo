@@ -35,9 +35,11 @@ namespace MergeSort
 			}
 		}
 
-		public void Sort(T[] arrayToSort)
-		{			
-			int length = arrayToSort.Length;
+		public void Sort(IEnumerable<T> arrayToSort)
+		{						
+			int length = ((T[])arrayToSort).Length;
+			if (arrayToSort == null)
+				throw new InvalidCastException();
 			_auxiliaryArray = new T[length];
 
 			//calculate size
@@ -45,7 +47,7 @@ namespace MergeSort
 			{
 				//calculate lower bound
 				for (int lo = 0; lo < length - sz; lo = (sz << 1) + lo)// 0, 2, 4, 6
-					Merge(arrayToSort, lo, lo + sz - 1, Math.Min(lo + sz + sz - 1, length - 1));
+					Merge((T[])arrayToSort, lo, lo + sz - 1, Math.Min(lo + sz + sz - 1, length - 1));
 			}
 
 		}
