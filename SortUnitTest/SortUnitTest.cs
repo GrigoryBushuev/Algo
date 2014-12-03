@@ -53,5 +53,18 @@ namespace SortUnitTest
 			//Asssert
 			Assert.IsTrue(arrayToSort.IsSorted());
 		}
+
+		[TestMethod]
+		public void NaturalMergeSortTest()
+		{
+			//Arrange
+			var naturalMergeSort = new NaturalMergeSort<int>();
+			var arrayToSort = new int[_arrayToSort.Length];
+			_arrayToSort.CopyTo(arrayToSort, 0);
+			//Act
+			arrayToSort.Sort(naturalMergeSort);
+			//Asssert
+			Assert.IsTrue(arrayToSort.IsSorted());
+		}
 	}
 }
