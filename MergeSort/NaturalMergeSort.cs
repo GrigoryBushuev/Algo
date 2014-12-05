@@ -36,10 +36,10 @@ namespace MergeSort
 
 		private int GetNextSentinelIndex(T[] arrayToScan, int startIndex)
 		{
-			if (startIndex == arrayToScan.Length - 1)
+			if (startIndex >= arrayToScan.Length - 1)
 				return startIndex;
 
-			while (startIndex <= arrayToScan.Length - 2 && arrayToScan[startIndex - 1].CompareTo(arrayToScan[startIndex]) < 0)
+			while (startIndex <= arrayToScan.Length - 2 && arrayToScan[startIndex + 1].CompareTo(arrayToScan[startIndex]) >= 0)
 				startIndex++;
 			return startIndex;				 
 		}
@@ -57,13 +57,20 @@ namespace MergeSort
 			while (lo < arr.Length)
 			{
 				mid = GetNextSentinelIndex(arr, lo);
+				if (mid == arr.Length - 1)
+				{
+					if (lo > 0)
+					{
+						lo = 0;
+						continue;
+					}
+					else
+						break;
+				}
 				hi = GetNextSentinelIndex(arr, mid + 1);
-				if (lo != hi)
-					Merge(arr, lo, mid, hi);
+				Merge(arr, lo, mid, hi);
 
-				if (lo == 0 && mid == hi)
-					break;
-				else if (hi == arr.Length - 1)
+				if (hi == arr.Length - 1)
 					lo = 0;
 				else
 					lo = hi + 1;
