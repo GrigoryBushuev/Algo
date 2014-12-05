@@ -24,9 +24,9 @@ namespace MergeSort
 			{
 				if (i > mid)
 					arrayToSort[k] = _auxiliaryArray[j++];
-				if (j > hi)
+				else if (j > hi)
 					arrayToSort[k] = _auxiliaryArray[i++];
-				if (_auxiliaryArray[i].CompareTo(_auxiliaryArray[j]) < 0)
+				else if (_auxiliaryArray[i].CompareTo(_auxiliaryArray[j]) < 0)
 					arrayToSort[k] = _auxiliaryArray[i++];
 				else
 					arrayToSort[k] = _auxiliaryArray[j++];
@@ -39,7 +39,7 @@ namespace MergeSort
 			if (startIndex == arrayToScan.Length - 1)
 				return startIndex;
 
-			while (arrayToScan[startIndex].CompareTo(arrayToScan[startIndex + 1]) < 0 && startIndex < arrayToScan.Length - 2)
+			while (startIndex <= arrayToScan.Length - 2 && arrayToScan[startIndex - 1].CompareTo(arrayToScan[startIndex]) < 0)
 				startIndex++;
 			return startIndex;				 
 		}
@@ -47,6 +47,8 @@ namespace MergeSort
 		public void Sort(IEnumerable<T> arrayToSort)
 		{
 			var arr = arrayToSort as T[];
+			_auxiliaryArray = new T[arr.Length];
+
 
 			int lo = 0;
 			int mid = arr.Length - 1;
@@ -55,8 +57,8 @@ namespace MergeSort
 			while (lo < arr.Length)
 			{
 				mid = GetNextSentinelIndex(arr, lo);
-				hi = GetNextSentinelIndex(arr, mid);
-				if (mid != hi)
+				hi = GetNextSentinelIndex(arr, mid + 1);
+				if (lo != hi)
 					Merge(arr, lo, mid, hi);
 
 				if (lo == 0 && mid == hi)
@@ -64,7 +66,7 @@ namespace MergeSort
 				else if (hi == arr.Length - 1)
 					lo = 0;
 				else
-					lo = hi;
+					lo = hi + 1;
 			}
 
 		}
