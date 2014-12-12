@@ -12,6 +12,13 @@ namespace MergeSort
 	{
 		public static void Sort<T>(this DataStructures.Linear.LinkedList<T> elementsToSort) where T : IComparable<T>
 		{
+			var loNode = elementsToSort.First;
+			var miNode = GetSentinelNode(loNode);
+			var hiNode = GetSentinelNode(miNode);
+
+
+
+
 
 		}
 
