@@ -8,11 +8,21 @@ using DataStructures.Linear;
 
 namespace MergeSort
 {
-	public class LinkedListSort<T> where T : IComparable<T>
+	public static class LinkedListSort
 	{
-		public void Sort(DataStructures.Linear.LinkedList<T> elementsToSort) 
+		public static void Sort<T>(this DataStructures.Linear.LinkedList<T> elementsToSort) where T : IComparable<T>
 		{
 
+		}
+
+		private static void Merge<T>(DataStructures.Linear.LinkedListNode<T> loNode, DataStructures.Linear.LinkedListNode<T> midNode) where T : IComparable<T>
+		{
+
+		}
+
+		private static DataStructures.Linear.LinkedListNode<T> GetSentinelNode<T>(DataStructures.Linear.LinkedListNode<T> startNode) where T : IComparable<T>
+		{
+			return null;
 		}
 	}
 }
