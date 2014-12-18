@@ -17,14 +17,38 @@ namespace MergeSort
 			var hiNode = GetSentinelNode(miNode);
 
 
-
-
-
 		}
 
-		private static void Merge<T>(DataStructures.Linear.LinkedListNode<T> loNode, DataStructures.Linear.LinkedListNode<T> midNode) where T : IComparable<T>
+		private static DataStructures.Linear.LinkedListNode<T> Merge<T>(DataStructures.Linear.LinkedListNode<T> aNode, DataStructures.Linear.LinkedListNode<T> bNode) where T : IComparable<T>
 		{
+			var dummyHead = new DataStructures.Linear.LinkedListNode<T>();
+			var curNode = dummyHead;
 
+			while (aNode != null || bNode != null)
+			{
+				if (bNode == null)
+				{
+					curNode.Next = aNode;
+					aNode = aNode.Next;
+				}
+				else if(aNode == null)
+				{
+					curNode.Next = bNode;
+					bNode = bNode.Next;
+				}
+				else if (aNode.Value.CompareTo(bNode.Value) <= 0)
+				{
+					curNode.Next = aNode;
+					aNode = aNode.Next;
+				}
+				else
+				{
+					curNode.Next = bNode;
+					bNode = bNode.Next;					
+				}
+				curNode = curNode.Next;
+			}
+			return dummyHead.Next;
 		}
 
 		private static DataStructures.Linear.LinkedListNode<T> GetSentinelNode<T>(DataStructures.Linear.LinkedListNode<T> startNode) where T : IComparable<T>

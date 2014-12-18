@@ -8,6 +8,12 @@ namespace DataStructures.Linear
 {
 	public class LinkedListNode<T>
 	{
+
+		public LinkedListNode()
+		{
+
+		}
+
 		public LinkedListNode(T value)
 		{
 			Value = value;
@@ -21,7 +27,7 @@ namespace DataStructures.Linear
 
 		public T Value
 		{
-			private set;
+			set;
 			get;
 		}
 
