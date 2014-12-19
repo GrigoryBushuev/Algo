@@ -1,4 +1,5 @@
 ﻿using System;
+using DataStructures.Linear;
 using MergeSort;
 using SortingAlgorithms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,8 +11,8 @@ namespace SortUnitTest
 	public class SortUnitTest
 	{
 		private static readonly int[] _arrayToSort = new[] { 5, 9, 8, 1, 4, 2, 6, 5, 3, 7 };
-		private static readonly int[] _sortedArray = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
+		private static readonly int[] _sortedArray = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };		
+			
 		[ClassInitialize()]
 		public static void ClassInit(TestContext context)
 		{
@@ -65,6 +66,29 @@ namespace SortUnitTest
 			arrayToSort.Sort(naturalMergeSort);
 			//Asssert
 			Assert.IsTrue(arrayToSort.IsSorted());
+		}
+
+		[TestMethod]
+		public void LinkedListSortTest()
+		{
+			//Arrange
+			var linkedList = new LinkedList<int>();
+			linkedList.AddFirst(5);
+			linkedList.AddFirst(9);
+			linkedList.AddFirst(8);
+
+			linkedList.AddFirst(1);
+			linkedList.AddFirst(4);
+			linkedList.AddFirst(2);
+
+			linkedList.AddFirst(6);
+			linkedList.AddFirst(5);
+			linkedList.AddFirst(3);
+			linkedList.AddFirst(7);
+			//Act
+			linkedList.Sort();
+			//Asssert
+			//Assert.IsTrue(arrayToSort.IsSorted());
 		}
 	}
 }
