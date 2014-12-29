@@ -12,23 +12,27 @@ namespace MergeSort
 	{
 		public static void Sort<T>(this DataStructures.Linear.LinkedList<T> elementsToSort) where T : IComparable<T>
 		{
-			var startNode = elementsToSort.First;
+			DataStructures.Linear.LinkedListNode<T> result = null;
+			var aNode = elementsToSort.First;
+			while (true)
+			{
 
-			var sentinelNode = GetSentinelNode(startNode);
+				var sentinelNode = GetSentinelNode(aNode);
+				var bNode = sentinelNode.Next;
+				sentinelNode.Next = null;
 
-			var bNode = sentinelNode.Next;
+				sentinelNode = GetSentinelNode(bNode);
+				var restNode = sentinelNode.Next;
+				sentinelNode.Next = null;
 
-			sentinelNode.Next = null;
-			sentinelNode = GetSentinelNode(bNode);
-
-
-			sentinelNode.Next = null;
-
-			var mergedList = Merge(startNode, bNode);
-
+				result = Merge(aNode, bNode);
+				result.Next = restNode;
+				aNode = restNode;
+			}
+			elementsToSort = result;
 		}
-		
-		private static DataStructures.Linear.LinkedListNode<T> Merge<T>(DataStructures.Linear.LinkedListNode<T> aNode, DataStructures.Linear.LinkedListNode<T> bNode) where T : IComparable<T>
+
+		private static DataStructures.Linear.LinkedListNode<T>  Merge<T>(DataStructures.Linear.LinkedListNode<T> aNode, DataStructures.Linear.LinkedListNode<T> bNode) where T : IComparable<T>
 		{
 			var dummyHead = new DataStructures.Linear.LinkedListNode<T>();
 			var curNode = dummyHead;
@@ -40,7 +44,7 @@ namespace MergeSort
 					curNode.Next = aNode;
 					aNode = aNode.Next;
 				}
-				else if(aNode == null)
+				else if (aNode == null)
 				{
 					curNode.Next = bNode;
 					bNode = bNode.Next;
@@ -53,7 +57,7 @@ namespace MergeSort
 				else
 				{
 					curNode.Next = bNode;
-					bNode = bNode.Next;					
+					bNode = bNode.Next;
 				}
 				curNode = curNode.Next;
 			}
