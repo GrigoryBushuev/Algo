@@ -12,27 +12,48 @@ namespace MergeSort
 	{
 		public static void Sort<T>(this DataStructures.Linear.LinkedList<T> elementsToSort) where T : IComparable<T>
 		{
-			DataStructures.Linear.LinkedListNode<T> result = null;
-			var aNode = elementsToSort.First;
-			while (true)
-			{
-
-				var sentinelNode = GetSentinelNode(aNode);
-				var bNode = sentinelNode.Next;
-				sentinelNode.Next = null;
-
-				sentinelNode = GetSentinelNode(bNode);
-				var restNode = sentinelNode.Next;
-				sentinelNode.Next = null;
-
-				result = Merge(aNode, bNode);
-				result.Next = restNode;
-				aNode = restNode;
-			}
-			elementsToSort = result;
+			var headNode = Sort(elementsToSort.First);			
 		}
 
-		private static DataStructures.Linear.LinkedListNode<T>  Merge<T>(DataStructures.Linear.LinkedListNode<T> aNode, DataStructures.Linear.LinkedListNode<T> bNode) where T : IComparable<T>
+		public static DataStructures.Linear.LinkedListNode<T> Sort<T>(DataStructures.Linear.LinkedListNode<T> firstNode) where T : IComparable<T>
+		{
+
+			var head = firstNode;
+			var iterNum = 0;
+
+			while (true)
+			{
+				var aNode = head;
+				iterNum = 0;
+
+				while (aNode != null)
+				{
+					var sentinelNode = GetSentinelNode(aNode);
+					var bNode = sentinelNode.Next;
+					if (bNode == null)
+						break;
+
+					sentinelNode.Next = null;
+
+					sentinelNode = GetSentinelNode(bNode);
+					var restNode = sentinelNode.Next;
+					sentinelNode.Next = null;
+
+					var mergedList = Merge(aNode, bNode, restNode);
+					if (iterNum == 0)
+						head = mergedList;
+					aNode = restNode;
+					iterNum++;
+				}
+				if (iterNum == 0)
+					break;
+			}
+			return head;
+		}
+
+		private static DataStructures.Linear.LinkedListNode<T> Merge<T>(DataStructures.Linear.LinkedListNode<T> aNode,																		
+																		DataStructures.Linear.LinkedListNode<T> bNode,
+																		DataStructures.Linear.LinkedListNode<T> restNode) where T : IComparable<T>
 		{
 			var dummyHead = new DataStructures.Linear.LinkedListNode<T>();
 			var curNode = dummyHead;
@@ -61,6 +82,7 @@ namespace MergeSort
 				}
 				curNode = curNode.Next;
 			}
+			curNode.Next = restNode;
 			return dummyHead.Next;
 		}
 
@@ -68,7 +90,7 @@ namespace MergeSort
 		{
 			var curNode = firstNode;
 
-			while (curNode != null && curNode.Next != null && curNode.Value.CompareTo(curNode.Next.Value) < 0)				
+			while (curNode != null && curNode.Next != null && curNode.Value.CompareTo(curNode.Next.Value) <= 0)				
 				curNode = curNode.Next;
 
 			return curNode;
