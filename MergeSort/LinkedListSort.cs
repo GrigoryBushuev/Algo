@@ -41,6 +41,8 @@ namespace MergeSort
 					//so we just add the rest sublist to the tail
 					if (rightNode == null)
 					{
+						if (tailNode == null)
+							break;
 						tailNode.Next = leftNode;
 						break;
 					}
