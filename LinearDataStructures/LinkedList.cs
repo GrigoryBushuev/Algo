@@ -60,18 +60,23 @@ namespace DataStructures.Linear
 			return newNode;
 		}
 
+		public LinkedListNode<T> AddLast(LinkedListNode<T> nodeToAdd)
+		{
+			if (_lastNode == null)
+				_firstNode = _lastNode = nodeToAdd;
+			else
+			{
+				_lastNode.Next = nodeToAdd;
+				_lastNode = nodeToAdd;
+			}
+			_count++;
+			return nodeToAdd;
+		}
+
 		public LinkedListNode<T> AddLast(T data)
 		{
 			var newNode = new LinkedListNode<T>(data);
-			if (_lastNode == null)
-				_firstNode = _lastNode = newNode;
-			else
-			{
-				_lastNode.Next = newNode;
-				_lastNode = newNode;
-			}
-			_count++;	
-			return newNode;
+			return AddLast(newNode);
 		}
 
 
@@ -84,7 +89,23 @@ namespace DataStructures.Linear
 			_firstNode = _firstNode.Next;
 			_count--;
 			return result;
-		}	
+		}
+
+		public void Clear()
+		{
+			LinkedListNode<T> curNode = First;
+
+			while(curNode != null)
+			{
+				var tempNode = curNode.Next;
+				curNode.Invalidate();
+				curNode = null;
+				curNode = tempNode;
+			}
+			_firstNode = null;
+			_lastNode = null;
+			_count = 0;
+		}
 
     }
 }

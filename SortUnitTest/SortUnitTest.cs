@@ -73,6 +73,7 @@ namespace SortUnitTest
 		{
 			//Arrange
 			var linkedList = new LinkedList<int>();
+			linkedList.AddFirst(11);
 			linkedList.AddFirst(5);
 			linkedList.AddFirst(9);
 			linkedList.AddFirst(8);
@@ -86,7 +87,7 @@ namespace SortUnitTest
 			linkedList.AddFirst(3);
 			linkedList.AddFirst(7);
 			//Act
-			linkedList.Sort();
+			var result = LinkedListSort.Sort(linkedList.First);
 			//Asssert
 			//Assert.IsTrue(arrayToSort.IsSorted());
 		}

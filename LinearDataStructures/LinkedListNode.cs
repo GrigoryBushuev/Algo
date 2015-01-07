@@ -36,6 +36,11 @@ namespace DataStructures.Linear
 			set;
 			get;
 		}
+
+		public void Invalidate()
+		{
+			Next = null;
+		}
 	}
 
 }

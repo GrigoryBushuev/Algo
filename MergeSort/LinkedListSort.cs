@@ -10,53 +10,60 @@ namespace MergeSort
 {
 	public static class LinkedListSort
 	{
-		public static void Sort<T>(this DataStructures.Linear.LinkedList<T> elementsToSort) where T : IComparable<T>
-		{
-			var headNode = Sort(elementsToSort.First);			
-		}
-
 		public static DataStructures.Linear.LinkedListNode<T> Sort<T>(DataStructures.Linear.LinkedListNode<T> firstNode) where T : IComparable<T>
 		{
+			if (firstNode == null)
+				throw new ArgumentNullException();
+
+			if (firstNode.Next == null)
+				return firstNode;
 
 			var head = firstNode;
-			var aNode = head;
-			var iterNum = 0;
+			var leftNode = head;
+			int iterNum = 0;
 
-			while (aNode != null)
+			while (leftNode != null)
 			{
-				aNode = head;
+				//Let's start again from the begining
+				leftNode = head;
 				iterNum = 0;
 				DataStructures.Linear.LinkedListNode<T> tailNode = null;
 
-				while (aNode != null)
+				while (leftNode != null)
 				{
-					var sentinelNode = GetSentinelNode(aNode);
-					var bNode = sentinelNode.Next;
-					if (bNode == null)
+					//Let's get the left sublist
+
+					//Let's find the node which devides sublist into two ordered sublists
+					var sentinelNode = GetSentinelNode(leftNode);
+					var rightNode = sentinelNode.Next;
+
+					//If the right node is null it means that we don't have two sublist and the left sublist is ordered already
+					//so we just add the rest sublist to the tail
+					if (rightNode == null)
 					{
-						tailNode.Next = sentinelNode;
+						tailNode.Next = leftNode;
 						break;
 					}
 
 					sentinelNode.Next = null;
 
-					sentinelNode = GetSentinelNode(bNode);
+					//Let's find the node where the right sublist ends
+					sentinelNode = GetSentinelNode(rightNode);
 					var restNode = sentinelNode.Next;
 					sentinelNode.Next = null;
 
-					DataStructures.Linear.LinkedListNode<T> newTailNode = null; 
-					var mergedList = Merge(aNode, bNode, ref newTailNode);
-					if (iterNum == 0)
-					{
-						head = mergedList;
-						tailNode = newTailNode;
-					}
-					else
-					{
-						tailNode.Next = mergedList;
-						tailNode = newTailNode;
-					}
-					aNode = restNode;
+					DataStructures.Linear.LinkedListNode<T> newTailNode = null;
+
+					//Merging of two ordered sublists   
+					var mergedList = Merge(leftNode, rightNode, ref newTailNode);
+					//If we're at the beginning of the list the head of the merged sublist becomes the head of the list
+					if (iterNum == 0)					
+						head = mergedList;					
+					else //add the 					
+						tailNode.Next = mergedList;						
+					
+					tailNode = newTailNode;
+					leftNode = restNode;
 					iterNum++;
 				}
 				if (iterNum == 0)
@@ -65,34 +72,42 @@ namespace MergeSort
 			return head;
 		}
 
-		private static DataStructures.Linear.LinkedListNode<T> Merge<T>(DataStructures.Linear.LinkedListNode<T> aNode,																		
-																		DataStructures.Linear.LinkedListNode<T> bNode,
+		/// <summary>
+		/// Merges two ordered sublists   
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="aNode">Left part of sublist</param>
+		/// <param name="bNode">Right part of sublist</param>
+		/// <param name="tailNode">Tail node of the merged list</param>
+		/// <returns>The result of merging</returns>
+		private static DataStructures.Linear.LinkedListNode<T> Merge<T>(DataStructures.Linear.LinkedListNode<T> leftNode,																		
+																		DataStructures.Linear.LinkedListNode<T> rightNode,
 																		ref DataStructures.Linear.LinkedListNode<T> tailNode) where T : IComparable<T>
 		{
 			var dummyHead = new DataStructures.Linear.LinkedListNode<T>();
 			var curNode = dummyHead;
 
-			while (aNode != null || bNode != null)
+			while (leftNode != null || rightNode != null)
 			{
-				if (bNode == null)
+				if (rightNode == null)
 				{
-					curNode.Next = aNode;
-					aNode = aNode.Next;
+					curNode.Next = leftNode;
+					leftNode = leftNode.Next;
 				}
-				else if (aNode == null)
+				else if (leftNode == null)
 				{
-					curNode.Next = bNode;
-					bNode = bNode.Next;
+					curNode.Next = rightNode;
+					rightNode = rightNode.Next;
 				}
-				else if (aNode.Value.CompareTo(bNode.Value) <= 0)
+				else if (leftNode.Value.CompareTo(rightNode.Value) <= 0)
 				{
-					curNode.Next = aNode;
-					aNode = aNode.Next;
+					curNode.Next = leftNode;
+					leftNode = leftNode.Next;
 				}
 				else
 				{
-					curNode.Next = bNode;
-					bNode = bNode.Next;
+					curNode.Next = rightNode;
+					rightNode = rightNode.Next;
 				}
 				curNode = curNode.Next;
 			}
@@ -100,6 +115,12 @@ namespace MergeSort
 			return dummyHead.Next;
 		}
 
+		/// <summary>
+		/// Returns the sentinel node
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="firstNode"></param>
+		/// <returns></returns>
 		private static DataStructures.Linear.LinkedListNode<T> GetSentinelNode<T>(DataStructures.Linear.LinkedListNode<T> firstNode) where T : IComparable<T>
 		{
 			var curNode = firstNode;
