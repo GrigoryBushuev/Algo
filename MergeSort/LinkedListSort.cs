@@ -19,19 +19,24 @@ namespace MergeSort
 		{
 
 			var head = firstNode;
+			var aNode = head;
 			var iterNum = 0;
 
-			while (true)
+			while (aNode != null)
 			{
-				var aNode = head;
+				aNode = head;
 				iterNum = 0;
+				DataStructures.Linear.LinkedListNode<T> tailNode = null;
 
 				while (aNode != null)
 				{
 					var sentinelNode = GetSentinelNode(aNode);
 					var bNode = sentinelNode.Next;
 					if (bNode == null)
+					{
+						tailNode.Next = sentinelNode;
 						break;
+					}
 
 					sentinelNode.Next = null;
 
@@ -39,9 +44,18 @@ namespace MergeSort
 					var restNode = sentinelNode.Next;
 					sentinelNode.Next = null;
 
-					var mergedList = Merge(aNode, bNode, restNode);
+					DataStructures.Linear.LinkedListNode<T> newTailNode = null; 
+					var mergedList = Merge(aNode, bNode, ref newTailNode);
 					if (iterNum == 0)
+					{
 						head = mergedList;
+						tailNode = newTailNode;
+					}
+					else
+					{
+						tailNode.Next = mergedList;
+						tailNode = newTailNode;
+					}
 					aNode = restNode;
 					iterNum++;
 				}
@@ -53,7 +67,7 @@ namespace MergeSort
 
 		private static DataStructures.Linear.LinkedListNode<T> Merge<T>(DataStructures.Linear.LinkedListNode<T> aNode,																		
 																		DataStructures.Linear.LinkedListNode<T> bNode,
-																		DataStructures.Linear.LinkedListNode<T> restNode) where T : IComparable<T>
+																		ref DataStructures.Linear.LinkedListNode<T> tailNode) where T : IComparable<T>
 		{
 			var dummyHead = new DataStructures.Linear.LinkedListNode<T>();
 			var curNode = dummyHead;
@@ -82,7 +96,7 @@ namespace MergeSort
 				}
 				curNode = curNode.Next;
 			}
-			curNode.Next = restNode;
+			tailNode = curNode;
 			return dummyHead.Next;
 		}
 
