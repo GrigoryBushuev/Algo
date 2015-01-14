@@ -91,5 +91,30 @@ namespace SortUnitTest
 			//Asssert
 			//Assert.IsTrue(arrayToSort.IsSorted());
 		}
+
+		[TestMethod]
+		public void ShuffleTest()
+		{
+			//Arrange
+			var linkedList = new LinkedList<int>();
+			linkedList.AddFirst(10);
+			linkedList.AddFirst(9);
+			linkedList.AddFirst(8);
+			linkedList.AddFirst(8);
+
+			linkedList.AddFirst(7);
+			linkedList.AddFirst(6);
+			linkedList.AddFirst(5);
+
+			linkedList.AddFirst(4);
+			linkedList.AddFirst(3);
+			linkedList.AddFirst(2);
+			linkedList.AddFirst(1);
+			//Act
+			var result = LinkedListShuffle.Shuffle(linkedList.First);
+			//Asssert
+			//Assert.IsTrue(arrayToSort.IsSorted());
+		}
+
 	}
 }

@@ -47,6 +47,7 @@
     <Compile Include="BottomUpMergeSort.cs" />
     <Compile Include="InsertationSort.cs" />
     <Compile Include="ISortingAlgorithm.cs" />
+    <Compile Include="LinkedListShuffle.cs" />
     <Compile Include="LinkedListSort.cs" />
     <Compile Include="MergeSort.cs" />
     <Compile Include="NaturalMergeSort.cs" />
