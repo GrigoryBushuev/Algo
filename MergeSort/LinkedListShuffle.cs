@@ -18,25 +18,22 @@ namespace MergeSort
 				return firstNode;
 
 			var middle = GetMiddle(firstNode);
-			var rightNode = middle;
+			var rightNode = middle.Next;
 			middle.Next = null;
-			
 
-			var leftNode = Shuffle(firstNode);
-			rightNode = Shuffle(rightNode);
-
-			var mergedResult = ShuffledMerge(leftNode, rightNode);
+			var mergedResult = ShuffledMerge(Shuffle(firstNode), Shuffle(rightNode));
 			return mergedResult;
 		}
 
 		private static DataStructures.Linear.LinkedListNode<T> ShuffledMerge<T>(DataStructures.Linear.LinkedListNode<T> leftNode, DataStructures.Linear.LinkedListNode<T> rightNode) where T : IComparable<T>
 		{
-			var dummyHead = new DataStructures.Linear.LinkedListNode<T>();			
+			var dummyHead = new DataStructures.Linear.LinkedListNode<T>();
 			DataStructures.Linear.LinkedListNode<T> curNode = dummyHead;
+			
 			var rnd = new Random((int)DateTime.Now.Ticks);
-			while (leftNode != null && rightNode != null)
+			while (leftNode != null || rightNode != null)
 			{
-				var rndRes =  rnd.Next(0, 1);
+				var rndRes =  rnd.Next(0, 2);
 				if (rndRes == 0)
 				{
 					if (leftNode != null)
@@ -63,7 +60,8 @@ namespace MergeSort
 						leftNode = leftNode.Next;
 					}
 				}
-				curNode = curNode.Next;
+
+				curNode = curNode.Next;						
 			}
 			return dummyHead.Next;
 		}
