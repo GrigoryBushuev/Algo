@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BottomUpMergeSort.cs" />
     <Compile Include="InsertationSort.cs" />
+    <Compile Include="InversionsCount.cs" />
     <Compile Include="ISortingAlgorithm.cs" />
     <Compile Include="LinkedListShuffle.cs" />
     <Compile Include="LinkedListSort.cs" />
