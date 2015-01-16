@@ -116,5 +116,16 @@ namespace SortUnitTest
 			//Assert.IsTrue(arrayToSort.IsSorted());
 		}
 
+
+		[TestMethod]
+		public void InversionsCountTest()
+		{
+			//Arrange
+			var arrayToSort = new int[_arrayToSort.Length];
+			_arrayToSort.CopyTo(arrayToSort, 0);
+			//Act
+			var res = arrayToSort.InversionsCount();
+			
+		}
 	}
 }
