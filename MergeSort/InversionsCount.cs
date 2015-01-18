@@ -69,7 +69,7 @@ namespace MergeSort
 				}
 				else
 				{
-					numOfSwaps++;
+					numOfSwaps = numOfSwaps + midIndex - i + 1;
 					arr[k] = aux[j++];
 				}
 			}
