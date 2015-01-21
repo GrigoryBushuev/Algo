@@ -12,7 +12,8 @@ namespace SortUnitTest
 	{
 		private static readonly int[] _arrayToSort = new[] { 5, 9, 8, 1, 4, 2, 6, 5, 3, 7 };
 		private static readonly int[] _arrayToCountSplit = new[] { 1, 3, 5, 2, 4, 6 };
-		private static readonly int[] _sortedArray = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };		
+		private static readonly int[] _sortedArray = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		private static readonly int[] _sortedArrayIndex = new[] { 3, 5, 8, 4, 0, 7, 6, 9, 2, 1 };		
 			
 		[ClassInitialize()]
 		public static void ClassInit(TestContext context)
@@ -130,6 +131,20 @@ namespace SortUnitTest
 			//Assert
 			Assert.AreEqual(res.Item2, 3);
 			
+		}
+
+		[TestMethod]
+		public void IndirectSortTest()
+		{
+			//Arrange
+			var arrayToSort = new int[_arrayToSort.Length];
+			_arrayToSort.CopyTo(arrayToSort, 0);
+			//Act
+			var res = arrayToSort.IndirectSort();
+
+			//Assert
+			Assert.AreEqual(res, _sortedArrayIndex);
+
 		}
 	}
 }

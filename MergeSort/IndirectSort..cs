@@ -12,58 +12,62 @@ namespace MergeSort
 	/// </summary>
 	public static  class IndirectSortUtil
 	{
-		public static int[] IndirectSort<T>(this IEnumerable<T> arrayToIndex) where T : IEnumerable<T>
-		{
+		public static int[] IndirectSort<T>(this IEnumerable<T> arrayToIndex) where T : IComparable<T>
+		{			
 			var indexArray = new int[arrayToIndex.Count()];
-			var aux = new T[arrayToIndex.Count()];
+			var auxIndexArray = new int[arrayToIndex.Count()];
 			for (int i = 0; i < arrayToIndex.Count(); i++)
 			{
 				indexArray[i] = i;
-
+				auxIndexArray[i] = i;
 			}
-			
-			Sort(arrayToIndex, indexArray, 0, arrayToIndex.Count() - 1);
+
+			Sort(arrayToIndex as T[], indexArray, auxIndexArray, 0, arrayToIndex.Count() - 1);
 			return indexArray;
 		}
 
 
-		private static void Sort<T>(T[] arrayToIndex, T[] aux, int[] indexArray, int startIndex, int endIndex) where T : IEnumerable<T>
+		private static void Sort<T>(T[] arrayToIndex, int[] indexArray, int[] auxIndexArray, int startIndex, int endIndex) where T : IComparable<T>
 		{
 			if (endIndex <= startIndex)
-				return indexArray;
+				return;
 
-			int midIndex = startIndex + (endIndex - startIndex) / 2;
-			Sort(arrayToIndex, indexArray, startIndex, midIndex);
-			Sort(arrayToIndex, indexArray, midIndex + 1, endIndex);
-			Merge(arrayToIndex, indexArray, startIndex, midIndex, endIndex);
+			var midIndex = startIndex + (endIndex - startIndex) / 2;
+			Sort(arrayToIndex, indexArray, auxIndexArray, startIndex, midIndex);
+			Sort(arrayToIndex, indexArray, auxIndexArray, midIndex + 1, endIndex);
+			Merge(arrayToIndex, indexArray, auxIndexArray, startIndex, midIndex, endIndex);
 		}
 
 
-		private static void Merge<T>(T[] arrayToIndex, T[] aux, int[] indexArray, int startIndex, int midIndex, int endIndex) where T : IEnumerable<T>
+		private static void Merge<T>(T[] arrayToIndex, int[] indexArray, int[] auxIndexArray, int startIndex, int midIndex, int endIndex) where T : IComparable<T>
 		{
-			int i = startIndex;
-			int j = midIndex + 1;
+			var i = startIndex;
+			var j = midIndex + 1;
 
-			while(i < midIndex || j < endIndex)
+			for (var k = startIndex; k <= endIndex; k++)
+			{
+				auxIndexArray[k] = indexArray[k];
+			}
+
+			for(int k = startIndex; k <= endIndex; k++)
 			{
 				if (i > midIndex)
 				{
-
+					indexArray[k] = auxIndexArray[j++];
 				}
 				else if (j > endIndex)
 				{
-
+					indexArray[k] = auxIndexArray[i++];
 				}
-				else if ()
+				else if (arrayToIndex[auxIndexArray[i]].CompareTo(arrayToIndex[auxIndexArray[j]]) <= 0)
 				{
-
+					indexArray[k] = auxIndexArray[i++];
 				}
 				else
 				{
-
+					indexArray[k] = auxIndexArray[j++];
 				}
 			}
-
 		}
 
 	}
