@@ -57,6 +57,7 @@
     <Compile Include="SortingAlgorithms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortingUtils.cs" />
+    <Compile Include="Triplicates.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
