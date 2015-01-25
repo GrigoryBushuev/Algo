@@ -16,7 +16,7 @@ namespace MergeSort
 			
 			var sortedList = Sort(mergedList);
 			var result = new List<string>();
-			for (int i = 0; i < sortedList.Count - 4; i++)
+			for (int i = 0; i < sortedList.Count - 2; i++)
 			{
 				var firstWord = sortedList[i];
 				var secondWord = sortedList[i + 1];
