@@ -3,7 +3,8 @@ using DataStructures.Linear;
 using MergeSort;
 using SortingAlgorithms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SortUnitTest
 {
@@ -74,7 +75,7 @@ namespace SortUnitTest
 		public void LinkedListSortTest()
 		{
 			//Arrange
-			var linkedList = new LinkedList<int>();
+			var linkedList = new DataStructures.Linear.LinkedList<int>();
 			linkedList.AddFirst(10);
 			linkedList.AddFirst(9);
 			linkedList.AddFirst(8);
@@ -98,7 +99,7 @@ namespace SortUnitTest
 		public void ShuffleTest()
 		{
 			//Arrange
-			var linkedList = new LinkedList<int>();
+			var linkedList = new DataStructures.Linear.LinkedList<int>();
 			linkedList.AddFirst(10);
 			linkedList.AddFirst(9);
 			linkedList.AddFirst(8);
@@ -143,8 +144,38 @@ namespace SortUnitTest
 			var res = arrayToSort.IndirectSort();
 
 			//Assert
-			Assert.AreEqual(res, _sortedArrayIndex);
+			Assert.IsTrue(res.SequenceEqual(_sortedArrayIndex));
 
 		}
+
+		[TestMethod]
+		public void TriplicatesTest()
+		{
+			//Arrange
+			var triplicates = new Triplicates();
+			var firstList = new List<string>();
+
+			firstList.Add("Ann");
+			firstList.Add("Annastacia");
+			firstList.Add("Bridget");
+			firstList.Add("John");
+
+			var secondList = new List<string>();
+			secondList.Add("Ann");
+			secondList.Add("Annastacia");
+
+
+			var thirdList = new List<string>();
+			thirdList.Add("Ann");
+			
+
+			//Act
+			var result = triplicates.GetTriplicates(firstList, secondList, thirdList);
+
+			//Assert
+			Assert.AreEqual(result.Count, 1);
+
+		}
+
 	}
 }

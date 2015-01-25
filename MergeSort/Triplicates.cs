@@ -11,7 +11,9 @@ namespace MergeSort
 
 		public List<string> GetTriplicates(List<string> firstList, List<string> secondList, List<string> thirdList)
 		{
-			var mergedList = firstList.Union(secondList).Union(thirdList).ToList();
+			var mergedList = firstList.Concat(secondList).Concat(thirdList).ToList(); 
+			
+			
 			var sortedList = Sort(mergedList);
 			var result = new List<string>();
 			for (int i = 0; i < sortedList.Count - 4; i++)
