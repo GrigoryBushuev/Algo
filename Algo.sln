@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingAlgorithms", "MergeSort\SortingAlgorithms.csproj", "{42E6D4DC-4121-4CCF-9C01-50E8D7B4D0B9}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "LinearDataStructures\DataStructures.csproj", "{7250AF8A-5430-4F3E-989E-B647A20244F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructuresTest", "DataStructuresTest\DataStructuresTest.csproj", "{0729FD15-DC43-45AD-BC19-74AA6831F6AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionFind", "UnionFind\UnionFind.csproj", "{2B6F08AD-E3F0-45CB-840E-35B3FCF9468E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionFindTest", "UnionFindTest\UnionFindTest.csproj", "{125E4448-A38C-44A0-9E38-E2627EAE0B52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B6F08AD-E3F0-45CB-840E-35B3FCF9468E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B6F08AD-E3F0-45CB-840E-35B3FCF9468E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B6F08AD-E3F0-45CB-840E-35B3FCF9468E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B6F08AD-E3F0-45CB-840E-35B3FCF9468E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125E4448-A38C-44A0-9E38-E2627EAE0B52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125E4448-A38C-44A0-9E38-E2627EAE0B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125E4448-A38C-44A0-9E38-E2627EAE0B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125E4448-A38C-44A0-9E38-E2627EAE0B52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
