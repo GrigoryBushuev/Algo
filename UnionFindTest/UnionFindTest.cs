@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnionFind;
+using System.Diagnostics;
 
 namespace UnionFindTest
 {
@@ -13,29 +14,27 @@ namespace UnionFindTest
 			//Arrange 
 			var quickFind = new QuickFind(10);
 			//Act
-			quickFind.Union(4, 3);
-			quickFind.Union(3, 8);
-			quickFind.Union(6, 5);
-			quickFind.Union(9, 4);
-			quickFind.Union(2, 1);
-			quickFind.Union(8, 9);
+
+			//7-9 0-3 5-0 5-6 0-8 4-1
+			quickFind.Union(7, 9);
+			quickFind.Union(0, 3);
 			quickFind.Union(5, 0);
-			quickFind.Union(7, 2);
-			quickFind.Union(6, 1);
-			quickFind.Union(1, 0);
-			quickFind.Union(6, 7);
+			quickFind.Union(5, 6);
+			quickFind.Union(0, 8);
+			quickFind.Union(4, 1);
 			//Assert
-			Assert.IsTrue(quickFind.IsConnected(4, 3));
-			Assert.IsTrue(quickFind.IsConnected(3, 8));
-			Assert.IsTrue(quickFind.IsConnected(6, 5));
-			Assert.IsTrue(quickFind.IsConnected(9, 4));
-			Assert.IsTrue(quickFind.IsConnected(2, 1));
-			Assert.IsTrue(quickFind.IsConnected(8, 9));
+			Assert.IsTrue(quickFind.IsConnected(7, 9));
+			Assert.IsTrue(quickFind.IsConnected(0, 3));
 			Assert.IsTrue(quickFind.IsConnected(5, 0));
-			Assert.IsTrue(quickFind.IsConnected(7, 2));
-			Assert.IsTrue(quickFind.IsConnected(6, 1));
-			Assert.IsTrue(quickFind.IsConnected(1, 0));
-			Assert.IsTrue(quickFind.IsConnected(6, 7));			
+
+			Assert.IsTrue(quickFind.IsConnected(5, 6));
+			Assert.IsTrue(quickFind.IsConnected(0, 8));
+			Assert.IsTrue(quickFind.IsConnected(4, 1));
+
+			foreach (var component in quickFind.Components)
+			{
+				Trace.WriteLine(component);		 
+			} 
 		}
 
 		[TestMethod]
@@ -43,30 +42,34 @@ namespace UnionFindTest
 		{
 			//Arrange 
 			var weightedQuickUnion = new WeightedQuickUnion(10);
+
+			//7-9 6-9 2-0 5-8 7-4 6-1 0-5 4-3 2-4 
+
 			//Act
-			weightedQuickUnion.Union(4, 3);
-			weightedQuickUnion.Union(3, 8);
-			weightedQuickUnion.Union(6, 5);
-			weightedQuickUnion.Union(9, 4);
-			weightedQuickUnion.Union(2, 1);
-			weightedQuickUnion.Union(8, 9);
-			weightedQuickUnion.Union(5, 0);
-			weightedQuickUnion.Union(7, 2);
+			weightedQuickUnion.Union(7, 9);
+			weightedQuickUnion.Union(6, 9);
+			weightedQuickUnion.Union(2, 0);
+			weightedQuickUnion.Union(5, 8);
+			weightedQuickUnion.Union(7, 4);
 			weightedQuickUnion.Union(6, 1);
-			weightedQuickUnion.Union(1, 0);
-			weightedQuickUnion.Union(6, 7);
+			weightedQuickUnion.Union(0, 5);
+			weightedQuickUnion.Union(4, 3);
+			weightedQuickUnion.Union(2, 4);
 			//Assert
-			Assert.IsTrue(weightedQuickUnion.IsConnected(4, 3));
-			Assert.IsTrue(weightedQuickUnion.IsConnected(3, 8));
-			Assert.IsTrue(weightedQuickUnion.IsConnected(6, 5));
-			Assert.IsTrue(weightedQuickUnion.IsConnected(9, 4));
-			Assert.IsTrue(weightedQuickUnion.IsConnected(2, 1));
-			Assert.IsTrue(weightedQuickUnion.IsConnected(8, 9));
-			Assert.IsTrue(weightedQuickUnion.IsConnected(5, 0));
-			Assert.IsTrue(weightedQuickUnion.IsConnected(7, 2));
+			Assert.IsTrue(weightedQuickUnion.IsConnected(7, 9));
+			Assert.IsTrue(weightedQuickUnion.IsConnected(6, 9));
+			Assert.IsTrue(weightedQuickUnion.IsConnected(2, 0));
+			Assert.IsTrue(weightedQuickUnion.IsConnected(5, 8));
+			Assert.IsTrue(weightedQuickUnion.IsConnected(7, 4));
 			Assert.IsTrue(weightedQuickUnion.IsConnected(6, 1));
-			Assert.IsTrue(weightedQuickUnion.IsConnected(1, 0));
-			Assert.IsTrue(weightedQuickUnion.IsConnected(6, 7));
+			Assert.IsTrue(weightedQuickUnion.IsConnected(0, 5));
+			Assert.IsTrue(weightedQuickUnion.IsConnected(4, 3));
+			Assert.IsTrue(weightedQuickUnion.IsConnected(2, 4));
+
+			foreach (var component in weightedQuickUnion.Components)
+			{
+				Trace.WriteLine(component);
+			} 
 		}
 	}
 }

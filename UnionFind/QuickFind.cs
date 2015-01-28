@@ -26,6 +26,7 @@ namespace UnionFind
 			}
 		}
 
+		public int[] Components { get { return _components; } }
 
 		public bool IsConnected(int p, int q)
 		{
