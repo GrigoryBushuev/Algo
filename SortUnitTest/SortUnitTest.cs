@@ -31,6 +31,18 @@ namespace SortUnitTest
 		}
 
 
+		[TestMethod]
+		public void ShellSortTest()
+		{
+			//Arrange
+			ShellSort<int> shellSort = new ShellSort<int>();
+			var arrayToSort = new int[_arrayToSort.Length];
+			_arrayToSort.CopyTo(arrayToSort, 0);
+			//Act
+			arrayToSort.Sort(shellSort);
+			//Assert
+			Assert.IsTrue(arrayToSort.IsSorted());
+		}
 
 		[TestMethod]
 		public void MergeSortTest()
