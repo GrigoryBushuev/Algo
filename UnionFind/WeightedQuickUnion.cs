@@ -43,6 +43,8 @@ namespace UnionFind
 			return Find(p) == Find(q);
 		}
 
+		public int[] Components { get { return _components; } }
+
 		public void Union(int p, int q)
 		{
 			int pRoot = Find(p);
