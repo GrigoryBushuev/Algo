@@ -14,7 +14,27 @@ namespace SortUnitTest
 		private static readonly int[] _arrayToSort = new[] { 5, 9, 8, 1, 4, 2, 6, 5, 3, 7 };
 		private static readonly int[] _arrayToCountSplit = new[] { 1, 3, 5, 2, 4, 6 };
 		private static readonly int[] _sortedArray = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		private static readonly int[] _sortedArrayIndex = new[] { 3, 5, 8, 4, 0, 7, 6, 9, 2, 1 };		
+		private static readonly int[] _sortedArrayIndex = new[] { 3, 5, 8, 4, 0, 7, 6, 9, 2, 1 };
+		private static readonly string[] _q2 = new[]
+		{
+			"sole",
+			"worm",
+			"wasp",
+			"deer",
+			"pony",
+			"hake",
+			"lynx",
+			"clam",
+			"bull",
+			"bass",
+			"toad",
+			"hare",
+			"slug",
+			"seal",
+			"frog",
+			"lamb"
+		};
+
 			
 		[ClassInitialize()]
 		public static void ClassInit(TestContext context)
@@ -30,14 +50,26 @@ namespace SortUnitTest
 			Assert.IsTrue(_sortedArray.IsSorted());
 		}
 
+		[TestMethod]
+		public void InsertationSortTest()
+		{
+			//Arrange
+			var insertationSort = new InsertationSort<string>();
+			var arrayToSort = new string[_q2.Length];
+			_q2.CopyTo(arrayToSort, 0);
+			//Act
+			arrayToSort.Sort(insertationSort);
+			//Assert
+			Assert.IsTrue(arrayToSort.IsSorted());
+		}
 
 		[TestMethod]
 		public void ShellSortTest()
 		{
 			//Arrange
-			ShellSort<int> shellSort = new ShellSort<int>();
-			var arrayToSort = new int[_arrayToSort.Length];
-			_arrayToSort.CopyTo(arrayToSort, 0);
+			var shellSort = new ShellSort<string>();
+			var arrayToSort = new string[_q2.Length];
+			_q2.CopyTo(arrayToSort, 0);
 			//Act
 			arrayToSort.Sort(shellSort);
 			//Assert
