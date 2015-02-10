@@ -76,6 +76,7 @@ namespace SortUnitTest
 			Assert.IsTrue(arrayToSort.IsSorted());
 		}
 
+
 		[TestMethod]
 		public void MergeSortTest()
 		{
@@ -85,6 +86,19 @@ namespace SortUnitTest
 			_arrayToSort.CopyTo(arrayToSort, 0);
 			//Act
 			arrayToSort.Sort(mergeSort);
+			//Assert
+			Assert.IsTrue(arrayToSort.IsSorted());
+		}
+
+		[TestMethod]
+		public void ThreeWayQuickSortTest()
+		{
+			//Arrange
+			var threeWayQuickSort = new ThreeWayQuickSort<int>();
+			var arrayToSort = new int[_arrayToSort.Length];
+			_arrayToSort.CopyTo(arrayToSort, 0);
+			//Act
+			arrayToSort.Sort(threeWayQuickSort);
 			//Assert
 			Assert.IsTrue(arrayToSort.IsSorted());
 		}
