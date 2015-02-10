@@ -33,13 +33,13 @@ namespace MergeSort
 				if (cmp < 0)				
 					arrayToSort.Swap(ltIndex++, i++);
 				else if (cmp > 0)
-					arrayToSort.Swap(gtIndex--, i);
+					arrayToSort.Swap(i, gtIndex--);
 				else
 					i++;
 			}
 
-			Sort(arrayToSort, loIndex, i - 1);
-			Sort(arrayToSort, i + 1, gtIndex);
+			Sort(arrayToSort, loIndex, ltIndex - 1);
+			Sort(arrayToSort, gtIndex + 1, hiIndex);
 		}
 	}
 }
