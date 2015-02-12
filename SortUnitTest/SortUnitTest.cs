@@ -10,7 +10,7 @@ namespace SortUnitTest
 {
 	[TestClass]
 	public class SortUnitTest
-	{
+	{		
 		private static readonly int[] _arrayToSort = new[] { 5, 9, 8, 1, 4, 2, 6, 5, 3, 7 };
 		private static readonly int[] _arrayToCountSplit = new[] { 1, 3, 5, 2, 4, 6 };
 		private static readonly int[] _sortedArray = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -91,12 +91,27 @@ namespace SortUnitTest
 		}
 
 		[TestMethod]
+		public void QuickSortTest()
+		{
+			//Arrange
+			var quickSort = new QuickSort<int>();
+
+
+			var arrayToSort = new []{ 19, 42, 25, 17, 10, 73, 13, 88, 80, 91, 18, 50 };
+			//_arrayToSort.CopyTo(arrayToSort, 0);
+			//Act
+			arrayToSort.Sort(quickSort);
+			//Assert
+			Assert.IsTrue(arrayToSort.IsSorted());
+		}
+
+		[TestMethod]
 		public void ThreeWayQuickSortTest()
 		{
 			//Arrange
 			var threeWayQuickSort = new ThreeWayQuickSort<int>();
-			var arrayToSort = new int[_arrayToSort.Length];
-			_arrayToSort.CopyTo(arrayToSort, 0);
+			var arrayToSort = new []{ 53, 14, 39, 96, 37, 27, 53, 73, 53, 53};
+			arrayToSort.CopyTo(arrayToSort, 0);
 			//Act
 			arrayToSort.Sort(threeWayQuickSort);
 			//Assert

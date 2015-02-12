@@ -18,7 +18,7 @@ namespace SortingAlgorithms
 
 			while (true)
 			{
-				while (i < hi && arrayToSort[i].CompareTo(partitionValue) < 0) i++;
+				while (i < hi && arrayToSort[i].CompareTo(partitionValue) <= 0) i++;
 				while (j > lo && arrayToSort[j].CompareTo(partitionValue) > 0) j--;
 				if (i >= j) break;
 				arrayToSort.Swap(i, j);
@@ -34,7 +34,7 @@ namespace SortingAlgorithms
 				return;
 
 			int partitionIndex = Partition(arrayToSort, lo, hi);
-			Sort(arrayToSort, lo, partitionIndex);
+			Sort(arrayToSort, lo, partitionIndex - 1);
 			Sort(arrayToSort, partitionIndex + 1, hi);
 		}
 
