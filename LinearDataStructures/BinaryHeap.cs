@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utils;
 
 namespace DataStructures
 {
@@ -35,15 +36,45 @@ namespace DataStructures
 			} 
 		}
 
-
-		private int Swim(T key)
+		public T DeleteMax()
 		{
+			var result = _keys[1];
+			_keys.Swap(1, _numKeys);
+			Sink(1);
+			_keys[_numKeys] = default(T);
+			_numKeys--;
 
+			return result;
 		}
 
-		private int Sink(T key)
+		public T Max 
 		{
-			return 0;
+			get 
+			{
+				return _keys[1];
+			}
+		}
+
+		private void Swim(int k)
+		{									
+			while(k > 1 && _keys[k/2].CompareTo(_keys[k]) < 0)
+			{				
+				_keys.Swap(k, k/2);
+				k = k/2;
+			}
+		}
+
+		private void Sink(int k)
+		{
+			int childIndex = k * 2;
+			while (k <= _numKeys && _keys[k].CompareTo(_keys[childIndex]) < 0)
+			{				
+				if (_keys[childIndex].CompareTo(_keys[childIndex + 1]) < 0)
+					childIndex++;
+
+				_keys.Swap(k, childIndex);
+				k = k * 2;
+			}
 		}
 
 		private void Insert(T key)
@@ -52,7 +83,7 @@ namespace DataStructures
 			if (_numKeys >= _keys.Length)
 				Resize();
 			_keys[_numKeys] = key;
-			Swim(key);
+			Swim(_numKeys);
 		}
 
 
