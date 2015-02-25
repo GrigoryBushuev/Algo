@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{42E6D4DC-4121-4CCF-9C01-50E8D7B4D0B9}</ProjectGuid>
+    <ProjectGuid>{3E94561B-784E-45C7-B907-E1E8647A2B7F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MergeSort</RootNamespace>
-    <AssemblyName>MergeSort</AssemblyName>
+    <RootNamespace>Utils</RootNamespace>
+    <AssemblyName>Utils</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -44,35 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ThreeWayQuickSort.cs" />
-    <Compile Include="BottomUpMergeSort.cs" />
-    <Compile Include="IndirectSort..cs" />
-    <Compile Include="InsertationSort.cs" />
-    <Compile Include="InversionsCount.cs" />
-    <Compile Include="ISortingAlgorithm.cs" />
-    <Compile Include="LinkedListShuffle.cs" />
-    <Compile Include="LinkedListSort.cs" />
-    <Compile Include="MergeSort.cs" />
-    <Compile Include="NaturalMergeSort.cs" />
-    <Compile Include="QuickSort.cs" />
-    <Compile Include="ShellSort.cs" />
-    <Compile Include="SortingAlgorithms.cs" />
+    <Compile Include="ArrayUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SortingUtils.cs" />
-    <Compile Include="Triplicates.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LinearDataStructures\DataStructures.csproj">
-      <Project>{7250af8a-5430-4f3e-989e-b647a20244f9}</Project>
-      <Name>DataStructures</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{3e94561b-784e-45c7-b907-e1e8647a2b7f}</Project>
-      <Name>Utils</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

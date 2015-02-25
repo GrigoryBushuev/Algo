@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingAlgorithms", "MergeSort\SortingAlgorithms.csproj", "{42E6D4DC-4121-4CCF-9C01-50E8D7B4D0B9}"
 EndProject
@@ -15,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionFind", "UnionFind\Unio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionFindTest", "UnionFindTest\UnionFindTest.csproj", "{125E4448-A38C-44A0-9E38-E2627EAE0B52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{1D8887A6-A1CF-4298-80DB-AF7273882F67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{3E94561B-784E-45C7-B907-E1E8647A2B7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructuresUnitTests", "DataStructuresUnitTests\DataStructuresUnitTests.csproj", "{404444C1-56B5-43BE-BAE5-681D1E889BF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +49,14 @@ Global
 		{125E4448-A38C-44A0-9E38-E2627EAE0B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{125E4448-A38C-44A0-9E38-E2627EAE0B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{125E4448-A38C-44A0-9E38-E2627EAE0B52}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D8887A6-A1CF-4298-80DB-AF7273882F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D8887A6-A1CF-4298-80DB-AF7273882F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D8887A6-A1CF-4298-80DB-AF7273882F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D8887A6-A1CF-4298-80DB-AF7273882F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E94561B-784E-45C7-B907-E1E8647A2B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E94561B-784E-45C7-B907-E1E8647A2B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E94561B-784E-45C7-B907-E1E8647A2B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E94561B-784E-45C7-B907-E1E8647A2B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{404444C1-56B5-43BE-BAE5-681D1E889BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404444C1-56B5-43BE-BAE5-681D1E889BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404444C1-56B5-43BE-BAE5-681D1E889BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404444C1-56B5-43BE-BAE5-681D1E889BF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -38,6 +38,9 @@ namespace DataStructures
 
 		public T DeleteMax()
 		{
+			if (_numKeys == 0)
+				throw new IndexOutOfRangeException();
+
 			var result = _keys[1];
 			_keys.Swap(1, _numKeys);
 			Sink(1);
@@ -51,6 +54,9 @@ namespace DataStructures
 		{
 			get 
 			{
+				if (_numKeys == 0)
+					throw new IndexOutOfRangeException();
+
 				return _keys[1];
 			}
 		}
@@ -67,9 +73,9 @@ namespace DataStructures
 		private void Sink(int k)
 		{
 			int childIndex = k * 2;
-			while (k <= _numKeys && _keys[k].CompareTo(_keys[childIndex]) < 0)
+			while (k < _numKeys && _keys[k].CompareTo(_keys[childIndex]) < 0)
 			{				
-				if (_keys[childIndex].CompareTo(_keys[childIndex + 1]) < 0)
+				if (childIndex + 1 < _numKeys && _keys[childIndex].CompareTo(_keys[childIndex + 1]) < 0)
 					childIndex++;
 
 				_keys.Swap(k, childIndex);
@@ -77,7 +83,7 @@ namespace DataStructures
 			}
 		}
 
-		private void Insert(T key)
+		public void Insert(T key)
 		{
 			_numKeys++;
 			if (_numKeys >= _keys.Length)
