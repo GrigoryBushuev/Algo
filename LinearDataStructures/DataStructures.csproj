@@ -39,9 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryHeap.cs" />
     <Compile Include="BinarySearchTree.cs" />
     <Compile Include="BinarySearchTreeNode.cs" />
+    <Compile Include="MaximumPriorityQueue.cs" />
     <Compile Include="LinkedList.cs" />
     <Compile Include="LinkedListNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

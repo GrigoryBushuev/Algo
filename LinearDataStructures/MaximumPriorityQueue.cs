@@ -7,17 +7,17 @@ using Utils;
 
 namespace DataStructures
 {
-	public class BinaryHeap<T> where T : IComparable<T>
+	public class MaximumPriorityQueue<T> where T : IComparable<T>
 	{
 		private T[] _keys;
 		private int _numKeys;
 
-		public BinaryHeap()
+		public MaximumPriorityQueue()
 		{
 			_keys = new T[2];
 		}
 
-		public BinaryHeap(int size)
+		public MaximumPriorityQueue(int size)
 		{
 			_keys = new T[size];
 		}
@@ -42,11 +42,9 @@ namespace DataStructures
 				throw new IndexOutOfRangeException();
 
 			var result = _keys[1];
-			_keys.Swap(1, _numKeys);
+			_keys.Swap(1, _numKeys--);
 			Sink(1);
-			_keys[_numKeys] = default(T);
-			_numKeys--;
-
+			_keys[_numKeys + 1] = default(T);			
 			return result;
 		}
 
@@ -72,14 +70,19 @@ namespace DataStructures
 
 		private void Sink(int k)
 		{
-			int childIndex = k * 2;
-			while (k < _numKeys && _keys[k].CompareTo(_keys[childIndex]) < 0)
-			{				
-				if (childIndex + 1 < _numKeys && _keys[childIndex].CompareTo(_keys[childIndex + 1]) < 0)
-					childIndex++;
+			while (2 * k <= _numKeys)
+			{
+				int childIndex = 2 * k;
+				if (_keys[k].CompareTo(_keys[childIndex]) >= 0)
+					break;
+				else
+				{				
+					if (_keys[childIndex].CompareTo(_keys[childIndex + 1]) < 0)
+						childIndex++;
 
-				_keys.Swap(k, childIndex);
-				k = k * 2;
+					_keys.Swap(k, childIndex);
+					k = childIndex;
+				}
 			}
 		}
 
