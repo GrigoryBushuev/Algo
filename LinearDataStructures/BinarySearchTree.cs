@@ -53,7 +53,8 @@ namespace DataStructures
 				rootNode.LeftNode = result;
 			}
 
-			rootNode.Size = result.Size + Size;
+			rootNode.Size = (rootNode.LeftNode == null ? 0 : rootNode.LeftNode.Size) + 
+				(rootNode.RightNode == null ? 0 : rootNode.RightNode.Size)+ 1;
 			return rootNode;
 		}
 	}
