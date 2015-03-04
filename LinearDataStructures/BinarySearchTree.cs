@@ -15,6 +15,11 @@ namespace DataStructures
 			return GetByKey(key);
 		}
 
+		public int Size
+		{
+			get { return root.Size; }
+		}
+
 		private BinarySearchTreeNode<TKey, TValue> GetByKey(BinarySearchTreeNode<TKey, TValue> rootNode, TKey key)
 		{
 			BinarySearchTreeNode<TKey, TValue> result = null;
@@ -26,9 +31,9 @@ namespace DataStructures
 			return result;
 		}
 
-		public BinarySearchTreeNode<TKey, TValue> Add(TKey key, TValue value)
+		public void Add(TKey key, TValue value)
 		{
-			return Add(root, key, value);
+			root = Add(root, key, value);
 		}
 
 		private BinarySearchTreeNode<TKey, TValue> Add(BinarySearchTreeNode<TKey, TValue> rootNode, TKey key, TValue value)
@@ -48,8 +53,8 @@ namespace DataStructures
 				rootNode.LeftNode = result;
 			}
 
-			result.Size = result.LeftNode.Size + result.RightNode.Size + 1;
-			return result;
+			rootNode.Size = result.Size + Size;
+			return rootNode;
 		}
 	}
 }
