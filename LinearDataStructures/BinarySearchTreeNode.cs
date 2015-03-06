@@ -10,7 +10,7 @@ namespace DataStructures
 	public class BinarySearchTreeNode<TKey, TValue> where TKey : IComparable<TKey> where TValue : IComparable<TValue>
 	{
 		public TKey Key { private set; get; }
-		public TValue Value { private set; get; }
+		public TValue Value { set; get; }
 		public BinarySearchTreeNode<TKey, TValue> LeftNode { set; get; }
 		public BinarySearchTreeNode<TKey, TValue> RightNode { set; get; }
 		public int Size { set; get; }

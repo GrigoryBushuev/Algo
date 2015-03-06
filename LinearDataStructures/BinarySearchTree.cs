@@ -17,17 +17,28 @@ namespace DataStructures
 
 		public int Size
 		{
-			get { return root.Size; }
+			get { return GetSize(root); }
 		}
 
-		private BinarySearchTreeNode<TKey, TValue> GetByKey(BinarySearchTreeNode<TKey, TValue> rootNode, TKey key)
+		private int GetSize(BinarySearchTreeNode<TKey, TValue> node)
+		{
+			return node == null ? 0 : node.Size;
+		}
+
+		private BinarySearchTreeNode<TKey, TValue> GetNodeByKey(BinarySearchTreeNode<TKey, TValue> rootNode, TKey key)
 		{
 			BinarySearchTreeNode<TKey, TValue> result = null;
-			if (key.CompareTo(rootNode.Key) > 0)
-				result = GetByKey(rootNode.RightNode, key);
-			else
-				result = GetByKey(rootNode.LeftNode, key);
 
+			var cmpResult = key.CompareTo(rootNode.Key);
+
+			if (cmpResult > 0)
+				result = GetNodeByKey(rootNode.RightNode, key);
+			else if (cmpResult < 0)
+				result = GetNodeByKey(rootNode.LeftNode, key);
+			else
+			{
+				result = rootNode;
+			}
 			return result;
 		}
 
@@ -41,20 +52,25 @@ namespace DataStructures
 			if (rootNode == null)
 				return new BinarySearchTreeNode<TKey, TValue>(key, value, null, null, 1);
 
+			var cmpResult = key.CompareTo(rootNode.Key);
+
 			BinarySearchTreeNode<TKey, TValue> result = null;
-			if (key.CompareTo(rootNode.Key) > 0)
+			if (cmpResult > 0)
 			{
 				result = Add(rootNode.RightNode, key, value);
 				rootNode.RightNode = result;
 			}
-			else
+			else if (cmpResult < 0)
 			{
 				result = Add(rootNode.LeftNode, key, value);
 				rootNode.LeftNode = result;
 			}
+			else
+			{
+				rootNode.Value = value;
+			}
 
-			rootNode.Size = (rootNode.LeftNode == null ? 0 : rootNode.LeftNode.Size) + 
-				(rootNode.RightNode == null ? 0 : rootNode.RightNode.Size)+ 1;
+			rootNode.Size = GetSize(rootNode.LeftNode) + GetSize(rootNode.RightNode) + 1;
 			return rootNode;
 		}
 	}
