@@ -73,5 +73,30 @@ namespace DataStructures
 			rootNode.Size = GetSize(rootNode.LeftNode) + GetSize(rootNode.RightNode) + 1;
 			return rootNode;
 		}
+
+		public BinarySearchTreeNode<TKey, TValue> Min()
+		{
+			return Min(root);
+		}
+
+		public BinarySearchTreeNode<TKey, TValue> Min(BinarySearchTreeNode<TKey, TValue> node)
+		{
+			if (node.LeftNode == null) return node;
+			return Min(node.LeftNode);
+		}
+
+		public void DeleteMin()
+		{
+			root = DeleteMin(root);
+		}
+
+		public BinarySearchTreeNode<TKey, TValue> DeleteMin(BinarySearchTreeNode<TKey, TValue> node)
+		{
+			if (node.LeftNode == null) return node.RightNode;
+			node.LeftNode = DeleteMin(node.LeftNode);
+			node.Size = GetSize(node.LeftNode) + GetSize(node.RightNode) + 1;
+			return node;
+		}
+
 	}
 }
