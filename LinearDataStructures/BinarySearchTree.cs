@@ -98,5 +98,28 @@ namespace DataStructures
 			return node;
 		}
 
+		public void Delete(TKey key)
+		{
+			root = Delete(root, key);
+		}
+
+		public BinarySearchTreeNode<TKey, TValue> Delete(BinarySearchTreeNode<TKey, TValue> node, TKey key)
+		{
+			BinarySearchTreeNode<TKey, TValue> result = null;
+			var cmpResult = node.Key.CompareTo(key);
+			if (cmpResult > 0)			
+				node.RightNode = Delete(node.RightNode, key);
+			else if (cmpResult < 0)
+				node.LeftNode = Delete(node.LeftNode, key);
+			else
+			{
+				var tempNode = node;
+				result = Min(tempNode.RightNode);
+				result.LeftNode = tempNode.LeftNode;
+				result.RightNode = DeleteMin(tempNode.RightNode);
+				result.Size = GetSize(result.LeftNode) + GetSize(result.RightNode) + 1;
+			}
+			return result;
+		}
 	}
 }
