@@ -105,21 +105,25 @@ namespace DataStructures
 
 		public BinarySearchTreeNode<TKey, TValue> Delete(BinarySearchTreeNode<TKey, TValue> node, TKey key)
 		{
-			BinarySearchTreeNode<TKey, TValue> result = null;
-			var cmpResult = node.Key.CompareTo(key);
+			if (node == null) return null;
+			
+			var cmpResult = key.CompareTo(node.Key);
 			if (cmpResult > 0)			
 				node.RightNode = Delete(node.RightNode, key);
 			else if (cmpResult < 0)
 				node.LeftNode = Delete(node.LeftNode, key);
 			else
 			{
+				if (node.RightNode == null) return node.LeftNode;
+				if (node.LeftNode == null) return node.RightNode;
+
 				var tempNode = node;
-				result = Min(tempNode.RightNode);
-				result.LeftNode = tempNode.LeftNode;
-				result.RightNode = DeleteMin(tempNode.RightNode);
-				result.Size = GetSize(result.LeftNode) + GetSize(result.RightNode) + 1;
+				node = Min(tempNode.RightNode);
+				node.LeftNode = tempNode.LeftNode;
+				node.RightNode = DeleteMin(tempNode.RightNode);
 			}
-			return result;
+			node.Size = GetSize(node.LeftNode) + GetSize(node.RightNode) + 1;
+			return node;
 		}
 	}
 }
