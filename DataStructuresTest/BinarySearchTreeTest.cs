@@ -71,9 +71,10 @@ namespace DataStructuresTest
 			bst.Add(4, "F");
 			//Act
 			bst.Delete(3);
-			
+			var testResult = bst.GetNodeByKey(5).LeftNode;
+
 			//Assert
-			//Assert.AreEqual(testResult.Key, 3);
+			Assert.AreEqual(testResult.Key, 4);
 		}
 	}
 }

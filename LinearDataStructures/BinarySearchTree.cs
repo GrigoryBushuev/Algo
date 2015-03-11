@@ -10,9 +10,9 @@ namespace DataStructures
 	{
 		private BinarySearchTreeNode<TKey, TValue> root;
 
-		public BinarySearchTreeNode<TKey, TValue> GetByKey(TKey key)
+		public BinarySearchTreeNode<TKey, TValue> GetNodeByKey(TKey key)
 		{
-			return GetByKey(key);
+			return GetNodeByKey(root, key);
 		}
 
 		public int Size
@@ -119,8 +119,8 @@ namespace DataStructures
 
 				var tempNode = node;
 				node = Min(tempNode.RightNode);
-				node.LeftNode = tempNode.LeftNode;
 				node.RightNode = DeleteMin(tempNode.RightNode);
+				node.LeftNode = tempNode.LeftNode;				
 			}
 			node.Size = GetSize(node.LeftNode) + GetSize(node.RightNode) + 1;
 			return node;
