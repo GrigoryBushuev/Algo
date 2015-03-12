@@ -8,16 +8,17 @@ namespace DataStructures
 {
 	public class BinarySearchTree<TKey, TValue> where TKey : IComparable<TKey> where TValue : IComparable<TValue>
 	{
-		private BinarySearchTreeNode<TKey, TValue> root;
+		private Queue<BinarySearchTreeNode<TKey, TValue>> _queue;
+		private BinarySearchTreeNode<TKey, TValue> _root;
 
 		public BinarySearchTreeNode<TKey, TValue> GetNodeByKey(TKey key)
 		{
-			return GetNodeByKey(root, key);
+			return GetNodeByKey(_root, key);
 		}
 
 		public int Size
 		{
-			get { return GetSize(root); }
+			get { return GetSize(_root); }
 		}
 
 		private int GetSize(BinarySearchTreeNode<TKey, TValue> node)
@@ -44,7 +45,7 @@ namespace DataStructures
 
 		public void Add(TKey key, TValue value)
 		{
-			root = Add(root, key, value);
+			_root = Add(_root, key, value);
 		}
 
 		private BinarySearchTreeNode<TKey, TValue> Add(BinarySearchTreeNode<TKey, TValue> rootNode, TKey key, TValue value)
@@ -76,7 +77,7 @@ namespace DataStructures
 
 		public BinarySearchTreeNode<TKey, TValue> Min()
 		{
-			return Min(root);
+			return Min(_root);
 		}
 
 		public BinarySearchTreeNode<TKey, TValue> Min(BinarySearchTreeNode<TKey, TValue> node)
@@ -85,9 +86,20 @@ namespace DataStructures
 			return Min(node.LeftNode);
 		}
 
+		public BinarySearchTreeNode<TKey, TValue> Max()
+		{
+			return Max(_root);
+		}
+
+		public BinarySearchTreeNode<TKey, TValue> Max(BinarySearchTreeNode<TKey, TValue> node)
+		{
+			if (node.RightNode == null) return node;
+			return Max(node.RightNode);
+		}
+
 		public void DeleteMin()
 		{
-			root = DeleteMin(root);
+			_root = DeleteMin(_root);
 		}
 
 		public BinarySearchTreeNode<TKey, TValue> DeleteMin(BinarySearchTreeNode<TKey, TValue> node)
@@ -100,7 +112,7 @@ namespace DataStructures
 
 		public void Delete(TKey key)
 		{
-			root = Delete(root, key);
+			_root = Delete(_root, key);
 		}
 
 		public BinarySearchTreeNode<TKey, TValue> Delete(BinarySearchTreeNode<TKey, TValue> node, TKey key)
@@ -124,6 +136,34 @@ namespace DataStructures
 			}
 			node.Size = GetSize(node.LeftNode) + GetSize(node.RightNode) + 1;
 			return node;
+		}
+
+
+		public IEnumerable<BinarySearchTreeNode<TKey, TValue>> All()
+		{
+			return Range(Min().Key, Max().Key);
+		}
+		public IEnumerable<BinarySearchTreeNode<TKey, TValue>> Range(TKey lo, TKey hi)
+		{
+			var queue = new Queue<BinarySearchTreeNode<TKey, TValue>>();
+			Range(_root, queue, Min().Key, Max().Key);
+			return queue;
+		}
+
+		private void Range(BinarySearchTreeNode<TKey, TValue> node, Queue<BinarySearchTreeNode<TKey, TValue>> queue, TKey lo, TKey hi)
+		{
+			if (node == null) return;			
+
+			var loCmpResult = lo.CompareTo(node.Key);
+			var hiCmpResult = hi.CompareTo(node.Key);
+
+			if (loCmpResult < 0)
+				Range(node.LeftNode, queue, lo, hi);
+
+			else if (loCmpResult >= 0 && hiCmpResult <=0)
+				queue.Enqueue(node);
+			else
+				Range(node.RightNode, queue, lo, hi);
 		}
 	}
 }
