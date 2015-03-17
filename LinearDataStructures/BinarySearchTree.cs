@@ -141,7 +141,9 @@ namespace DataStructures
 
 		public IEnumerable<BinarySearchTreeNode<TKey, TValue>> All()
 		{
-			return Range(Min().Key, Max().Key);
+			if (GetSize(_root) > 0)
+				return Range(Min().Key, Max().Key);
+			return null;
 		}
 		public IEnumerable<BinarySearchTreeNode<TKey, TValue>> Range(TKey lo, TKey hi)
 		{

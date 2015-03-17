@@ -109,7 +109,7 @@ namespace DataStructuresTest
 				new KeyValuePair<int, string>(4, "F"),
 			};
 
-			//var res = testData. (t => bst.Add(t.Key, t.Value));
+			//var res = testData.(t => bst.Add(t.Key, t.Value));
 
 			//Act
 			var testResult = bst.All();
