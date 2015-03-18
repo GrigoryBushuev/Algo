@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -143,12 +144,12 @@ namespace DataStructures
 		{
 			if (GetSize(_root) > 0)
 				return Range(Min().Key, Max().Key);
-			return null;
+			return Enumerable.Empty<BinarySearchTreeNode<TKey, TValue>>();
 		}
 		public IEnumerable<BinarySearchTreeNode<TKey, TValue>> Range(TKey lo, TKey hi)
 		{
 			var queue = new Queue<BinarySearchTreeNode<TKey, TValue>>();
-			Range(_root, queue, Min().Key, Max().Key);
+			Range(_root, queue, lo, hi);
 			return queue;
 		}
 
@@ -162,9 +163,10 @@ namespace DataStructures
 			if (loCmpResult < 0)
 				Range(node.LeftNode, queue, lo, hi);
 
-			else if (loCmpResult >= 0 && hiCmpResult <=0)
+			if (loCmpResult <= 0 && hiCmpResult >= 0)
 				queue.Enqueue(node);
-			else
+			
+			if (hiCmpResult > 0)
 				Range(node.RightNode, queue, lo, hi);
 		}
 	}

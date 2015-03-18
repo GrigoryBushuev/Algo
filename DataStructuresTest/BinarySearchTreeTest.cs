@@ -109,12 +109,55 @@ namespace DataStructuresTest
 				new KeyValuePair<int, string>(4, "F"),
 			};
 
-			//var res = testData.(t => bst.Add(t.Key, t.Value));
+			//Act
+			testData.All(t =>
+			{
+				bst.Add(t.Key, t.Value);
+				return true;				
+			});
+			var resultList = bst.All().ToList();
+
+			//Assert
+			Assert.AreEqual(resultList.Count, 6);
+
+			Assert.AreEqual(resultList[0].Key, 2);
+			Assert.AreEqual(resultList[1].Key, 3);
+			Assert.AreEqual(resultList[2].Key, 4);
+			Assert.AreEqual(resultList[3].Key, 5);
+			Assert.AreEqual(resultList[4].Key, 6);
+			Assert.AreEqual(resultList[5].Key, 7);			
+		}
+
+		[TestMethod]
+		public void RangeTest()
+		{
+			//Arrange
+			var bst = new BinarySearchTree<int, string>();
+			var testData = new[]
+			{
+				new KeyValuePair<int, string>(5, "A"),
+				new KeyValuePair<int, string>(3, "B"),
+				new KeyValuePair<int, string>(6, "C"),
+				new KeyValuePair<int, string>(2, "D"),
+				new KeyValuePair<int, string>(7, "E"),
+				new KeyValuePair<int, string>(4, "F"),
+			};
 
 			//Act
-			var testResult = bst.All();
+			testData.All(t =>
+			{
+				bst.Add(t.Key, t.Value);
+				return true;
+			});
+			var resultList = bst.Range(4, 7).ToList();
+
 			//Assert
-			
+			Assert.AreEqual(resultList.Count, 4);
+
+			Assert.AreEqual(resultList[0].Key, 4);
+			Assert.AreEqual(resultList[1].Key, 5);
+			Assert.AreEqual(resultList[2].Key, 6);
+			Assert.AreEqual(resultList[3].Key, 7);
 		}
 	}
 }
