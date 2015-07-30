@@ -169,5 +169,12 @@ namespace DataStructures
 			if (hiCmpResult > 0)
 				Range(node.RightNode, queue, lo, hi);
 		}
+
+		public IEnumerable<BinarySearchTreeNode<TKey, TValue>> BFS()
+		{
+			if (GetSize(_root) > 0)
+				return Range(Min().Key, Max().Key);
+			return Enumerable.Empty<BinarySearchTreeNode<TKey, TValue>>();
+		}
 	}
 }
