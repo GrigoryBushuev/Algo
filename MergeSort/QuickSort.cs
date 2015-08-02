@@ -25,8 +25,8 @@ namespace SortingAlgorithms
 				arrayToSort.Swap(i, j);
 			}
 
-			arrayToSort.Swap(partitionIndex, i - 1);
-			return i - 1;
+			arrayToSort.Swap(partitionIndex, j);
+			return j;
 		}
 
 		private void Sort(T[] arrayToSort, int lo, int hi)
