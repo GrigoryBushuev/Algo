@@ -51,7 +51,7 @@ namespace DataStructuresTest
 			maxPQ.DeleteMax();
 
 			Assert.AreEqual(maxPQ.Size, 7);
-			Assert.AreEqual(maxPQ.Max, 72);
+			Assert.AreEqual(maxPQ.Max, 70);
 		}
 	}
 }

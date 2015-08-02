@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataStructures.Linear;
 
 namespace DataStructures
 {
 	public class BinarySearchTree<TKey, TValue> where TKey : IComparable<TKey> where TValue : IComparable<TValue>
-	{
-		private Queue<BinarySearchTreeNode<TKey, TValue>> _queue;
+	{		
 		private BinarySearchTreeNode<TKey, TValue> _root;
 
 		public BinarySearchTreeNode<TKey, TValue> GetNodeByKey(TKey key)
@@ -140,13 +139,13 @@ namespace DataStructures
 		}
 
 
-		public IEnumerable<BinarySearchTreeNode<TKey, TValue>> All()
+		public System.Collections.Generic.IEnumerable<BinarySearchTreeNode<TKey, TValue>> All()
 		{
 			if (GetSize(_root) > 0)
 				return Range(Min().Key, Max().Key);
 			return Enumerable.Empty<BinarySearchTreeNode<TKey, TValue>>();
 		}
-		public IEnumerable<BinarySearchTreeNode<TKey, TValue>> Range(TKey lo, TKey hi)
+		public System.Collections.Generic.IEnumerable<BinarySearchTreeNode<TKey, TValue>> Range(TKey lo, TKey hi)
 		{
 			var queue = new Queue<BinarySearchTreeNode<TKey, TValue>>();
 			Range(_root, queue, lo, hi);
@@ -170,11 +169,27 @@ namespace DataStructures
 				Range(node.RightNode, queue, lo, hi);
 		}
 
-		public IEnumerable<BinarySearchTreeNode<TKey, TValue>> BFS()
+
+        private void LevelOrderTraversal(Queue<BinarySearchTreeNode<TKey, TValue>> queue)
+        {
+            foreach (var node in queue) {
+                if (queue.Contains(node)) {
+                    if (node.LeftNode != null)
+                        queue.Enqueue(node.LeftNode);
+                    if (node.RightNode != null)
+                        queue.Enqueue(node.RightNode);
+                }
+            }
+        }
+
+        public System.Collections.Generic.IEnumerable<BinarySearchTreeNode<TKey, TValue>> LevelOrderTraversal()
 		{
-			if (GetSize(_root) > 0)
-				return Range(Min().Key, Max().Key);
-			return Enumerable.Empty<BinarySearchTreeNode<TKey, TValue>>();
+            var result = new Queue<BinarySearchTreeNode<TKey, TValue>>();
+            if (GetSize(_root) > 0) {
+                result.Enqueue(_root);
+                LevelOrderTraversal(result);
+            }
+			return result;
 		}
-	}
+    }
 }

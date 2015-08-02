@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace DataStructures.Linear
 {
 
-	public class LinkedList<T>
+	public class LinkedList<T> : IEnumerable<T>
 	{
 		private LinkedListNode<T> _firstNode;
 		private LinkedListNode<T> _lastNode;
@@ -107,5 +108,20 @@ namespace DataStructures.Linear
 			_count = 0;
 		}
 
+        public IEnumerator<T> GetEnumerator()
+        {
+            LinkedListNode<T> curNode = First;
+
+            while (curNode != null)
+            {
+                yield return curNode.Value;
+                curNode = curNode.Next;                
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }
