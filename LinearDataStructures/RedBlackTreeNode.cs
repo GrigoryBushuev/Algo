@@ -20,6 +20,7 @@ namespace DataStructures
 
         public bool IsRed { set; get; }
 
+
         public RedBlackTreeNode(TKey key, TValue value, RedBlackTreeNode<TKey, TValue> leftNode, RedBlackTreeNode<TKey, TValue> rightNode, int size, bool isRed = true)
         {
             Key = key;
