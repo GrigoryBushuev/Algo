@@ -12,7 +12,7 @@ namespace DataStructures
     /// <typeparam name="TNode"></typeparam>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
-    public class RedBlackTree<TNode, TKey, TValue> where TKey : IComparable<TKey> where TNode : RedBlackTreeNode<TKey, TValue>
+    public class RedBlackTree<TKey, TValue> where TKey : IComparable<TKey>
     {
         private RedBlackTreeNode<TKey, TValue> _root;
 
