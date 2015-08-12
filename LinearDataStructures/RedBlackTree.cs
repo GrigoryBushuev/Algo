@@ -22,7 +22,8 @@ namespace DataStructures
             node.RightNode = x.LeftNode;
             x.LeftNode = node;            
             x.IsRed = node.IsRed;
-                       
+
+            //TODO: Add getting size             
             return x;
         }
 
@@ -31,7 +32,9 @@ namespace DataStructures
             var x = node.LeftNode;
             node.LeftNode = x.RightNode;
             x.RightNode = node;
-            x.IsRed = node.IsRed;         
+            x.IsRed = node.IsRed;       
+            
+            //TODO: Add getting size  
             return x;
         }
 
@@ -57,6 +60,22 @@ namespace DataStructures
             Add(_root, key, value);
         }
 
+        public IEnumerable<RedBlackTreeNode<TKey, TValue>> LevelOrderTraversal()
+        {
+            var BFSNodes = new Queue<RedBlackTreeNode<TKey, TValue>>();
+            BFSNodes.Enqueue(_root);
+            foreach (var node in BFSNodes)
+            {
+                if (node.LeftNode != null)
+                    BFSNodes.Enqueue(node.LeftNode);
+                if (node.RightNode != null)
+                    BFSNodes.Enqueue(node.RightNode);
+            }
+
+            return BFSNodes;
+        }
+
+
         public RedBlackTreeNode<TKey, TValue> Add(RedBlackTreeNode<TKey, TValue> node, TKey key, TValue value)
         {
             if (node == null)
@@ -64,9 +83,9 @@ namespace DataStructures
 
             int cmp = key.CompareTo(node.Key);
             if (cmp < 0)
-                node.LeftNode = Add(node, key, value);
+                node.LeftNode = Add(node.LeftNode, key, value);
             else if (cmp > 0)
-                node.RightNode = Add(node, key, value);
+                node.RightNode = Add(node.RightNode, key, value);
             else
                 node.Value = value;
 
