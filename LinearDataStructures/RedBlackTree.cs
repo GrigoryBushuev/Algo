@@ -62,7 +62,7 @@ namespace DataStructures
 
         public IEnumerable<RedBlackTreeNode<TKey, TValue>> LevelOrderTraversal()
         {
-            var BFSNodes = new Queue<RedBlackTreeNode<TKey, TValue>>();
+            var BFSNodes = new Linear.Queue<RedBlackTreeNode<TKey, TValue>>();
             BFSNodes.Enqueue(_root);
             foreach (var node in BFSNodes)
             {

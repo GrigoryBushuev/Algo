@@ -169,25 +169,16 @@ namespace DataStructures
 				Range(node.RightNode, queue, lo, hi);
 		}
 
-
-        private void LevelOrderTraversal(Queue<BinarySearchTreeNode<TKey, TValue>> queue)
-        {
-            foreach (var node in queue) {
-                if (queue.Contains(node)) {
-                    if (node.LeftNode != null)
-                        queue.Enqueue(node.LeftNode);
-                    if (node.RightNode != null)
-                        queue.Enqueue(node.RightNode);
-                }
-            }
-        }
-
         public System.Collections.Generic.IEnumerable<BinarySearchTreeNode<TKey, TValue>> LevelOrderTraversal()
 		{
             var result = new Queue<BinarySearchTreeNode<TKey, TValue>>();
-            if (GetSize(_root) > 0) {
-                result.Enqueue(_root);
-                LevelOrderTraversal(result);
+            result.Enqueue(_root);
+            foreach (var node in result)
+            {
+                if (node.LeftNode != null)
+                    result.Enqueue(node.LeftNode);
+                if (node.RightNode != null)
+                    result.Enqueue(node.RightNode);
             }
 			return result;
 		}
