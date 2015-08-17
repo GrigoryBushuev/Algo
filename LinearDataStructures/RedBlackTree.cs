@@ -32,8 +32,8 @@ namespace DataStructures
             var x = node.LeftNode;
             node.LeftNode = x.RightNode;
             x.RightNode = node;
-            x.IsRed = node.IsRed;       
-            
+            x.IsRed = node.IsRed;
+            node.IsRed = true;
             //TODO: Add getting size  
             return x;
         }
@@ -58,6 +58,8 @@ namespace DataStructures
             if (_root == null)
                 _root = new RedBlackTreeNode<TKey, TValue>(key, value, null, null, 1, false);
             Add(_root, key, value);
+            //We color the root black after each insertion
+            _root.IsRed = false;
         }
 
         public IEnumerable<RedBlackTreeNode<TKey, TValue>> LevelOrderTraversal()
@@ -94,7 +96,7 @@ namespace DataStructures
                 node = RotateLeft(node);
 
             if (IsRed(node.LeftNode) && IsRed(node.LeftNode.LeftNode))
-                node = RotateLeft(node);
+                node = RotateRight(node);
 
             if (IsRed(node.LeftNode) && IsRed(node.RightNode))
                 node = FlipColors(node);
