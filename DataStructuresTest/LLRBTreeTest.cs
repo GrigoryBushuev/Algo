@@ -118,13 +118,9 @@ namespace DataStructuresTest
             Assert.AreEqual(result.ElementAt(12).Key, 43);
 
             //Assert are red nodes
-            //TODO: Set correct asserts
-            //Assert.IsTrue(result.ElementAt(7).IsRed);
-            //Assert.IsTrue(result.ElementAt(1).IsRed);
-            //Assert.IsTrue(result.ElementAt(12).IsRed);
-            //Assert.IsTrue(result.ElementAt(9).IsRed);
-            //Assert.IsTrue(result.ElementAt(5).IsRed);
-            //Assert.IsTrue(result.ElementAt(11).IsRed);
+            Assert.IsTrue(result.ElementAt(1).IsRed);
+            Assert.IsTrue(result.ElementAt(12).IsRed);
+            Assert.IsTrue(result.ElementAt(11).IsRed);
         }
     }
 }
