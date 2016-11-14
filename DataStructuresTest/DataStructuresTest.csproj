@@ -61,7 +61,7 @@
     <Compile Include="LLRBTreeTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LinearDataStructures\DataStructures.csproj">
+    <ProjectReference Include="..\DataStructures\DataStructures.csproj">
       <Project>{7250af8a-5430-4f3e-989e-b647a20244f9}</Project>
       <Name>DataStructures</Name>
     </ProjectReference>
