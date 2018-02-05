@@ -1,14 +1,14 @@
 ﻿using System;
 using DataStructures.Linear;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace DataStructuresTest
 {
-	[TestClass]
+	[TestFixture]
 	public class StackTest
 	{
 
-		[TestMethod]
+		[Test]
 		public void PushTest()
 		{
 			//Arrange
@@ -21,7 +21,7 @@ namespace DataStructuresTest
 			Assert.AreEqual(expectedResult, actualResult);
 		}
 
-		[TestMethod]
+		[Test]
 		public void PeekTest()
 		{
 			//Arrange
@@ -34,7 +34,7 @@ namespace DataStructuresTest
 			Assert.AreEqual(expectedResult, actualResult);
 		}
 
-		[TestMethod]
+		[Test]
 		public void PopTest()
 		{
 			//Arrange

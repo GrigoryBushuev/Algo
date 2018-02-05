@@ -1,16 +1,16 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataStructures;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
 
 namespace DataStructuresTest
 {
-    [TestClass]
+    [TestFixture]
     public class LLRBTreeTest
     {
 
-        [TestMethod]
+        [Test]
         public void AddTest()
         {
             //Arrange
@@ -67,7 +67,7 @@ namespace DataStructuresTest
         }
 
 
-        [TestMethod]
+        [Test]
         public void LevelOrderTraversalTest()
         {
             //Arrange

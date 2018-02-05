@@ -1,13 +1,13 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DataStructuresTest
 {
-	[TestClass]
+	[TestFixture]
 	public class LinkedListTest
 	{
-		[TestMethod]
+		[Test]
 		public void LinkedListAddFirstIsNotEmpty()
 		{
 			//Arrange
@@ -21,7 +21,7 @@ namespace DataStructuresTest
 		}
 
 
-		[TestMethod]
+		[Test]
 		public void LinkedListAddLastIsNotEmpty()
 		{
 			//Arrange
@@ -34,7 +34,7 @@ namespace DataStructuresTest
 			Assert.IsFalse(linkedList.IsEmpty);
 		}
 
-		[TestMethod]
+		[Test]
 		public void LinkedListRemoveFirst()
 		{
 			//Arrange
@@ -48,7 +48,7 @@ namespace DataStructuresTest
 			Assert.IsTrue(linkedList.IsEmpty);
 		}
 
-		[TestMethod]
+		[Test]
 		public void LinkedListCount()
 		{
 			//Arrange

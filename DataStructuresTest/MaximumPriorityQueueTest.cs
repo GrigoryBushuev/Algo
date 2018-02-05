@@ -1,13 +1,13 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataStructures;
+using NUnit.Framework;
 
 namespace DataStructuresTest
 {
-	[TestClass]
+	[TestFixture]
 	public class MaximumPriorityQueueTest
 	{
-		[TestMethod]
+		[Test]
 		public void InsertionTest()
 		{
 			//84 59 51 36 55 19 13 33 26 34 
@@ -30,7 +30,7 @@ namespace DataStructuresTest
 			Assert.AreEqual(maxPQ.Max, 93);
 		}
 
-		[TestMethod]
+		[Test]
 		public void DeleteMaxTest()
 		{
 			//88 80 72 65 70 68 54 11 49 42 

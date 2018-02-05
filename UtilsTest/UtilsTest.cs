@@ -1,13 +1,13 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Utils;
 
 namespace UtilsTest
 {
-    [TestClass]
+    [TestFixture]
     public class UtilsTest
     {
-        [TestMethod]
+        [Test]
         public void RankTest()
         {
             //11 12 17 19 23 29 31 34 40 50 70 76 81 87 89 

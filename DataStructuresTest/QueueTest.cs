@@ -1,13 +1,12 @@
-﻿using System;
-using DataStructures.Linear;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using DataStructures.Linear;
+using NUnit.Framework;
 
 namespace DataStructuresTest
 {
-	[TestClass]
+	[TestFixture]
 	public class QueueTest
 	{
-		[TestMethod]
+		[Test]
 		public void EnqueueTest()
 		{
 			//Arrange
@@ -21,7 +20,7 @@ namespace DataStructuresTest
 			Assert.AreEqual(expectedResult, actualResult);
 		}
 
-		[TestMethod]
+		[Test]
 		public void DequeueTest()
 		{
 			//Arrange
@@ -35,7 +34,7 @@ namespace DataStructuresTest
 			Assert.AreEqual(expectedResult, actualResult);
 		}
 
-		[TestMethod]
+		[Test]
 		public void PeekTest()
 		{
 			//Arrange

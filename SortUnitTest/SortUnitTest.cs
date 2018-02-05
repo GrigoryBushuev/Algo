@@ -2,13 +2,14 @@
 using DataStructures.Linear;
 using MergeSort;
 using SortingAlgorithms;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace SortUnitTest
 {
-	[TestClass]
+	[TestFixture]
 	public class SortUnitTest
 	{		
 		private static readonly int[] _arrayToSort = new[] { 5, 9, 8, 1, 4, 2, 6, 5, 3, 7 };
@@ -35,22 +36,14 @@ namespace SortUnitTest
 			"lamb"
 		};
 
-			
-		[ClassInitialize()]
-		public static void ClassInit(TestContext context)
-		{
-
-		}
-
-
-		[TestMethod]
+		[Test]
 		public void IsSortedTest()
 		{
 			Assert.IsFalse(_arrayToSort.IsSorted());
 			Assert.IsTrue(_sortedArray.IsSorted());
 		}
 
-		[TestMethod]
+		[Test]
 		public void InsertationSortTest()
 		{
 			//Arrange
@@ -63,7 +56,7 @@ namespace SortUnitTest
 			Assert.IsTrue(arrayToSort.IsSorted());
 		}
 
-		[TestMethod]
+		[Test]
 		public void ShellSortTest()
 		{
 			//Arrange
@@ -77,7 +70,7 @@ namespace SortUnitTest
 		}
 
 
-		[TestMethod]
+		[Test]
 		public void MergeSortTest()
 		{
 			//Arrange
@@ -90,7 +83,7 @@ namespace SortUnitTest
 			Assert.IsTrue(arrayToSort.IsSorted());
 		}
 
-		[TestMethod]
+		[Test]
 		public void QuickSortTest()
 		{
 			//Arrange
@@ -105,7 +98,7 @@ namespace SortUnitTest
 			Assert.IsTrue(arrayToSort.IsSorted());
 		}
 
-		[TestMethod]
+		[Test]
 		public void ThreeWayQuickSortTest()
 		{
 			//Arrange
@@ -118,7 +111,7 @@ namespace SortUnitTest
 			Assert.IsTrue(arrayToSort.IsSorted());
 		}
 
-		[TestMethod]
+		[Test]
 		public void BottomUpMergeSortTest()
 		{
 			//Arrange
@@ -131,7 +124,7 @@ namespace SortUnitTest
 			Assert.IsTrue(arrayToSort.IsSorted());
 		}
 
-		[TestMethod]
+		[Test]
 		public void NaturalMergeSortTest()
 		{
 			//Arrange
@@ -144,7 +137,7 @@ namespace SortUnitTest
 			Assert.IsTrue(arrayToSort.IsSorted());
 		}
 
-		[TestMethod]
+		[Test]
 		public void LinkedListSortTest()
 		{
 			//Arrange
@@ -168,7 +161,7 @@ namespace SortUnitTest
 			//Assert.IsTrue(arrayToSort.IsSorted());
 		}
 
-		[TestMethod]
+		[Test]
 		public void ShuffleTest()
 		{
 			//Arrange
@@ -193,7 +186,7 @@ namespace SortUnitTest
 		}
 
 
-		[TestMethod]
+		[Test]
 		public void InversionsCountTest()
 		{
 			//Arrange
@@ -207,7 +200,7 @@ namespace SortUnitTest
 			
 		}
 
-		[TestMethod]
+		[Test]
 		public void IndirectSortTest()
 		{
 			//Arrange
@@ -221,7 +214,7 @@ namespace SortUnitTest
 
 		}
 
-		[TestMethod]
+		[Test]
 		public void TriplicatesTest()
 		{
 			//Arrange

@@ -1,14 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using UnionFind;
 using System.Diagnostics;
 
 namespace UnionFindTest
 {
-	[TestClass]
+	[TestFixture]
 	public class UnionFindUnitTest
 	{
-		[TestMethod]
+		[Test]
 		public void QuickFindTest()
 		{
 			//Arrange 
@@ -37,7 +37,7 @@ namespace UnionFindTest
 			} 
 		}
 
-		[TestMethod]
+		[Test]
 		public void WeightedQuickUnionTest()
 		{
 			//Arrange 
