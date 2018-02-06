@@ -29,10 +29,11 @@ namespace DataStructures
         public T DeleteMin()
         {
             var min = _heapData[1];
-            //to avoid loitering
+            _heapData[1] = _heapData[_heapSize];
+            Sink();
+            //to avoid loitering            
             _heapData[_heapSize] = default(T);
             _heapSize--;
-            Sink();
             return min;
         }
 
@@ -52,8 +53,25 @@ namespace DataStructures
         }
 
         private void Sink()
-        {
+        {            
+            var currentIndex = 1u;                        
+            var leftChildIndex = GetChildIndex(currentIndex);
 
+            while (currentIndex < _heapSize && _heapData[currentIndex].CompareTo(_heapData[leftChildIndex]) > 0)
+            {
+                Swap(currentIndex, leftChildIndex);
+                currentIndex = leftChildIndex;
+                leftChildIndex = GetChildIndex(currentIndex);
+            }
+        }
+
+        private uint GetChildIndex(uint index)
+        {
+            var childIndex = index << 1;
+            if (childIndex >= _heapSize)
+                return index;
+
+            return childIndex + 1 > _heapSize || _heapData[childIndex].CompareTo(_heapData[childIndex + 1]) < 0 ? childIndex : childIndex + 1;
         }
 
         private uint GetParentIndex(uint index)
