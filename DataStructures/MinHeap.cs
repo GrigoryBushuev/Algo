@@ -55,22 +55,19 @@ namespace DataStructures
         private void Sink()
         {            
             var currentIndex = 1u;                        
-            var leftChildIndex = GetChildIndex(currentIndex);
+            var childIndex = GetChildIndex(currentIndex);
 
-            while (currentIndex < _heapSize && _heapData[currentIndex].CompareTo(_heapData[leftChildIndex]) > 0)
+            while (currentIndex < _heapSize && _heapData[currentIndex].CompareTo(_heapData[childIndex]) > 0)
             {
-                Swap(currentIndex, leftChildIndex);
-                currentIndex = leftChildIndex;
-                leftChildIndex = GetChildIndex(currentIndex);
+                Swap(currentIndex, childIndex);
+                currentIndex = childIndex;
+                childIndex = GetChildIndex(currentIndex);
             }
         }
 
         private uint GetChildIndex(uint index)
         {
             var childIndex = index << 1;
-            if (childIndex >= _heapSize)
-                return index;
-
             return childIndex + 1 > _heapSize || _heapData[childIndex].CompareTo(_heapData[childIndex + 1]) < 0 ? childIndex : childIndex + 1;
         }
 
