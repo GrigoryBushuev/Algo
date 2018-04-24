@@ -5,7 +5,7 @@ using DataStructures.Linear;
 namespace DataStructures
 {
     public class BinarySearchTree<TKey, TValue> where TKey : IComparable<TKey> where TValue : IComparable<TValue>
-    {		
+    {
         private BinarySearchTreeNode<TKey, TValue> _root;
 
         public BinarySearchTreeNode<TKey, TValue> GetNodeByKey(TKey key)
