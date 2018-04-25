@@ -6,10 +6,16 @@ namespace DataStructures.Nonlinear.Graphs
     /// <summary>
     /// The crux of the method is that its traverse starts from source and explores its adjacent vertexes first.
     /// 
-    /// 
+    /// 1. Add current vertex to the queue.
+    /// 2. While the queue is not empty dequeue a vertex from the queue and get its adjacent vertexes. 
+    /// 3. To avoid cycles mark an each adjacent vertex as visited.
+    /// 4. Each adjacent vertex add to collection of edges to the current vertex.
+    /// 5. Add each adjacent vertex to the queue.
     /// 
     /// Advantages: The BFS allows to find the optimal path to the target vertex.
     /// Disadvantages: The BFS requires a queue as an additional data structure.
+    /// 
+    /// Applications: Garbage collectors. Serialization/Deserialization algorithms.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class BreathFirstSearch<T> : IGraphSearch
