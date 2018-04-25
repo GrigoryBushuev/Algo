@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace DataStructures.Nonlinear.GraphTest
 {
     [TestFixture]
-    public class DepthFirstSearchTest
+    public class BreathFirstSearchTest
     {
         private AdjacencyListGraph<int> _graph;
 
@@ -48,24 +48,26 @@ namespace DataStructures.Nonlinear.GraphTest
         public void HasPathTo_OnValidParameters_ReturnsExpectedResult(int fromVertexIndex, int toVertexIndex, bool expectedResult)
         {
             //Arrange
-            var dfs = new DepthFirstSearch<int>(_graph, fromVertexIndex);
+            var bfs = new BreathFirstSearch<int>(_graph, fromVertexIndex);
             //Act
-            var actualResult = dfs.HasPathTo(toVertexIndex);
+            var actualResult = bfs.HasPathTo(toVertexIndex);
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [TestCase(0, 4, new int[] { 0, 5, 3, 4})]
+        [TestCase(0, 4, new int[] { 0, 5, 4})]
         [TestCase(10, 4, new int[] { })]
-        [TestCase(10, 12, new int[] { 10, 9, 11, 12})]
+        [TestCase(10, 11, new int[] { 10, 9, 11})]
         public void GetPathTo_OnValidParameters_ReturnsExpectedResult(int fromVertexIndex, int toVertexIndex, IEnumerable<int> expectedPath)
         {
             //Arrange
-            var dfs = new DepthFirstSearch<int>(_graph, fromVertexIndex);
+            var bfs = new BreathFirstSearch<int>(_graph, fromVertexIndex);
             //Act
-            var actualResult = dfs.GetPathTo(toVertexIndex);
+            var actualResult = bfs.GetPathTo(toVertexIndex);
             //Assert
             CollectionAssert.AreEqual(expectedPath, actualResult);
         }
+
+
     }
 }

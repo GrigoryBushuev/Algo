@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdjacencyListGraph.cs" />
+    <Compile Include="BreathFirstSearch.cs" />
     <Compile Include="DepthFirstSearch.cs" />
+    <Compile Include="IGraphSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
