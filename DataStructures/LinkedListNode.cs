@@ -1,46 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataStructures.Linear
+﻿namespace DataStructures.Linear
 {
-	public class LinkedListNode<T>
-	{
+    public class LinkedListNode<T>
+    {
+        public LinkedListNode() { }
 
-		public LinkedListNode()
-		{
+        public LinkedListNode(T value)
+        {
+            Value = value;
+        }
 
-		}
+        public T Value
+        {
+            private set;
+            get;
+        }
 
-		public LinkedListNode(T value)
-		{
-			Value = value;
-		}
+        public LinkedListNode<T> Next { get; set; }
 
-		public LinkedListNode(LinkedListNode<T> next, T value)
-		{
-			Next = next;
-			Value = value;
-		}
+        public LinkedListNode<T> Prev { get; set; }
 
-		public T Value
-		{
-			set;
-			get;
-		}
-
-		public LinkedListNode<T> Next
-		{
-			set;
-			get;
-		}
-
-		public void Invalidate()
-		{
-			Next = null;
-		}
-	}
-
+        public void Invalidate()
+        {
+            Next = null;
+            Prev = null;
+        }
+    }
 }

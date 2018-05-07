@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructures.Linear
 {
+    /// <summary>
+    /// The Queue<T> implementation is based on LinkedList<T>
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Queue<T> : IEnumerable<T>
     {
         private LinkedList<T> _linkedList = new LinkedList<T>();
@@ -19,19 +20,17 @@ namespace DataStructures.Linear
         public T Peek()
         {
             if (_linkedList.IsEmpty)
-                throw new ArgumentOutOfRangeException();
+                throw new InvalidOperationException();
 
-            var res = _linkedList.First;
-            return res.Value;
+            return _linkedList.First.Value;
         }
 
         public T Dequeue()
         {
             if (_linkedList.IsEmpty)
-                throw new ArgumentOutOfRangeException();
+                throw new InvalidOperationException();
 
-            var res = _linkedList.RemoveFirst();
-            return res.Value;
+            return _linkedList.RemoveFirst().Value;
         }
 
         public IEnumerator<T> GetEnumerator()

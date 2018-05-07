@@ -4,7 +4,6 @@ namespace Utils
 {
     public static class ArrayUtils
     {
-
         public static void Swap<T>(this T[] array, int i, int j) where T : IComparable<T>
         {
             var temp = array[i];
@@ -14,6 +13,9 @@ namespace Utils
 
         public static int? Rank<T>(this T[] sortedArray, T key) where T : IComparable<T>
         {
+            if (sortedArray is null)
+                throw new ArgumentNullException(nameof(sortedArray));
+
             int lo = 0;
             int hi = sortedArray.Length - 1;
 
@@ -30,6 +32,5 @@ namespace Utils
             }
             return null;
         }
-
     }
 }

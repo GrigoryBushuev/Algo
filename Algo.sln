@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortUnitTest", "SortUnitTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "DataStructures\DataStructures.csproj", "{7250AF8A-5430-4F3E-989E-B647A20244F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructuresTest", "DataStructuresTest\DataStructuresTest.csproj", "{0729FD15-DC43-45AD-BC19-74AA6831F6AB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionFind", "UnionFind\UnionFind.csproj", "{2B6F08AD-E3F0-45CB-840E-35B3FCF9468E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionFindTest", "UnionFindTest\UnionFindTest.csproj", "{125E4448-A38C-44A0-9E38-E2627EAE0B52}"
@@ -22,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures.Nonlinear.Graphs", "DataStructures.Nonlinear.Graphs\DataStructures.Nonlinear.Graphs.csproj", "{5812F5BC-94B1-4428-8061-3CEEF4F3D7B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures.Nonlinear.GraphTest", "DataStructures.Nonlinear.GraphTest\DataStructures.Nonlinear.GraphTest.csproj", "{4AD513D6-8B01-485D-B89F-25B9AED6B354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures.Tests", "DataStructures.Tests\DataStructures.Tests.csproj", "{0729FD15-DC43-45AD-BC19-74AA6831F6AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,6 @@ Global
 		{7250AF8A-5430-4F3E-989E-B647A20244F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7250AF8A-5430-4F3E-989E-B647A20244F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7250AF8A-5430-4F3E-989E-B647A20244F9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B6F08AD-E3F0-45CB-840E-35B3FCF9468E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B6F08AD-E3F0-45CB-840E-35B3FCF9468E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B6F08AD-E3F0-45CB-840E-35B3FCF9468E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +65,10 @@ Global
 		{4AD513D6-8B01-485D-B89F-25B9AED6B354}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AD513D6-8B01-485D-B89F-25B9AED6B354}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AD513D6-8B01-485D-B89F-25B9AED6B354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0729FD15-DC43-45AD-BC19-74AA6831F6AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

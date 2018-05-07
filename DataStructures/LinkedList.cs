@@ -1,23 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructures.Linear
 {
-
     public class LinkedList<T> : IEnumerable<T>
     {
-        private LinkedListNode<T> _firstNode;
-        private LinkedListNode<T> _lastNode;
-        private int _count;
-
-        public LinkedList()
-        {
-
-        }
+        public LinkedList() { }
 
         public LinkedList(IEnumerable<T> data)
         {
@@ -27,75 +16,81 @@ namespace DataStructures.Linear
             }
         }
 
-        public LinkedListNode<T> First
-        {
-            get { return _firstNode; }
-        }
+        public LinkedListNode<T> First { get; private set; }
 
-        public LinkedListNode<T> Last
-        {
-            get { return _lastNode; }
-        }
+        public LinkedListNode<T> Last { get; private set; }
 
-        public int Count
-        {
-            get { return _count; }
-        }
+        public int Count { get; private set; }
 
         public bool IsEmpty
         {
-            get { return _count == 0; }
+            get { return Count == 0; }
         }
 
         public LinkedListNode<T> AddFirst(T data)
         {
-            var newNode = new LinkedListNode<T>(data);
-            if (_firstNode == null)
-                _firstNode = _lastNode = newNode;
+            LinkedListNode<T> newNode = new LinkedListNode<T>(data);
+            if (First is null)
+            {
+                First = Last = newNode;
+            }
             else
             {
-                newNode.Next = _firstNode;
-                _firstNode = newNode;
+                First.Prev = newNode;
+                newNode.Next = First;                
+                First = newNode;
             }
-            _count++;
+            Count++;
             return newNode;
-        }
-
-        public LinkedListNode<T> AddLast(LinkedListNode<T> nodeToAdd)
-        {
-            if (_lastNode == null)
-                _firstNode = _lastNode = nodeToAdd;
-            else
-            {
-                _lastNode.Next = nodeToAdd;
-                _lastNode = nodeToAdd;
-            }
-            _count++;
-            return nodeToAdd;
         }
 
         public LinkedListNode<T> AddLast(T data)
         {
             var newNode = new LinkedListNode<T>(data);
-            return AddLast(newNode);
+            if (Last is null)
+            {                
+                First = Last = newNode;
+            }
+            else
+            {
+                Last.Next = newNode;
+                newNode.Prev = Last;
+                Last = newNode;
+            }
+            Count++;
+            return newNode;
         }
-
 
         public LinkedListNode<T> RemoveFirst()
         {
             if (IsEmpty)
-                throw new ArgumentOutOfRangeException();
+                throw new InvalidOperationException();
 
-            var result = _firstNode;
-            _firstNode = _firstNode.Next;
-            _count--;
+            var result = First;
+            First = First.Next;
+            if (First != null)
+                First.Prev = null;
+            Count--;
+            result.Invalidate();
+            return result;
+        }
+
+        public LinkedListNode<T> RemoveLast()
+        {
+            if (IsEmpty)
+                throw new InvalidOperationException();
+
+            var result = Last;
+            Last = Last.Prev;
+            Last.Next = null;
+            Count--;
+            result.Invalidate();
             return result;
         }
 
         public void Clear()
         {
             LinkedListNode<T> curNode = First;
-
             while(curNode != null)
             {
                 var tempNode = curNode.Next;
@@ -103,15 +98,14 @@ namespace DataStructures.Linear
                 curNode = null;
                 curNode = tempNode;
             }
-            _firstNode = null;
-            _lastNode = null;
-            _count = 0;
+            First = null;
+            Last = null;
+            Count = 0;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
             LinkedListNode<T> curNode = First;
-
             while (curNode != null)
             {
                 yield return curNode.Value;

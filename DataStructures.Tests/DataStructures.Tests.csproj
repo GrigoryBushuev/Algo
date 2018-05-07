@@ -7,8 +7,8 @@
     <ProjectGuid>{0729FD15-DC43-45AD-BC19-74AA6831F6AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataStructuresTest</RootNamespace>
-    <AssemblyName>DataStructuresTest</AssemblyName>
+    <RootNamespace>DataStructures.Tests</RootNamespace>
+    <AssemblyName>DataStructures.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -59,14 +59,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BinarySearchTreeTest.cs" />
     <Compile Include="LinkedListTest.cs" />
+    <Compile Include="ListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StackTest.cs" />
     <Compile Include="QueueTest.cs" />
-    <Compile Include="MaximumPriorityQueueTest.cs" />
     <Compile Include="LLRBTreeTest.cs" />
-    <Compile Include="MinHeapTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataStructures\DataStructures.csproj">

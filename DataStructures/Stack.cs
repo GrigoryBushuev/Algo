@@ -1,37 +1,48 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataStructures.Linear
 {
-	public class Stack<T>
-	{
-		private LinkedList<T> _linkedList = new LinkedList<T>();
+    /// <summary>
+    /// The Stack<T> implementation is based on LinkedList<T>
+    /// </summary>
+    public class Stack<T> : IEnumerable<T>
+    {
+        private LinkedList<T> _linkedList = new LinkedList<T>();
 
+        public void Push(T data)
+        {
+            _linkedList.AddFirst(data);
+        }
 
-		public void Push(T data)
-		{
-			_linkedList.AddFirst(data);
-		}
+        public T Peek()
+        {
+            if (_linkedList.IsEmpty)
+                throw new InvalidOperationException();
 
-		public T Peek()
-		{
-			if (_linkedList.IsEmpty)
-				throw new ArgumentOutOfRangeException();
+            return _linkedList.First.Value;
+        }
 
-			var res = _linkedList.First;
-			return res.Value;
-		}
+        public T Pop()
+        {
+            if (_linkedList.IsEmpty)
+                throw new InvalidOperationException();
 
-		public T Pop()
-		{
-			if (_linkedList.IsEmpty)
-				throw new ArgumentOutOfRangeException();
+            return _linkedList.RemoveFirst().Value;
+        }
 
-			var res = _linkedList.RemoveFirst();
-			return res.Value;
-		}
-	}
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var item in _linkedList)
+            {
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
 }

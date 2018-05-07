@@ -6,10 +6,11 @@ using NUnit.Framework;
 
 namespace DataStructuresTest
 {
+    [Ignore("Rewrite")]
+    [Category("Left-leaning red–black tree")]
     [TestFixture]
     public class LLRBTreeTest
     {
-
         [Test]
         public void AddTest()
         {
@@ -17,7 +18,6 @@ namespace DataStructuresTest
             var bst = new RedBlackTree<int, string>();
 
             // 33 28 63 20 31 39 79 10 35 60          ( red links = 10 39 )
-
             var testData = new[]
             {
                 new KeyValuePair<int, string>(33, "33"),
