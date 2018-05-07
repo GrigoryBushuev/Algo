@@ -46,6 +46,7 @@ namespace DataStructures
 
         public void Clear()
         {
+            _size = 0;
             Array.Clear(_items, 0, _items.Length);
         }
 

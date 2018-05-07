@@ -58,9 +58,44 @@ namespace DataStructures.Tests
                 _list.Add(item);
             }
             _list[index] = expectedResult;
+            //Act
             var actualResult = _list[index];
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestCase(new int[] { 0 }, 1)]
+        [TestCase(new int[] { 0, 1 }, 2)]
+        [TestCase(new int[] { 0, 1, 2 }, 3)]
+        [TestCase(new int[] { 0, 1, 2, 3 }, 4)]
+        public void Count_AfterAdd_ReturnsExpectedResult(int[] items, int expectedResult)
+        {
+            //Arrange
+            foreach (var item in items)
+            {
+                _list.Add(item);
+            }
+            //Act
+            var actualResult = _list.Count;
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestCase(new int[] { 0 })]
+        [TestCase(new int[] { 0, 1 })]
+        [TestCase(new int[] { 0, 1, 2 })]
+        [TestCase(new int[] { 0, 1, 2, 3 })]
+        public void Clear_RemovesAllItemsFromList(int[] items)
+        {
+            //Arrange
+            foreach (var item in items)
+            {
+                _list.Add(item);
+            }
+            //Act
+             _list.Clear();
+            //Assert
+            CollectionAssert.IsEmpty(_list);
         }
     }
 }
