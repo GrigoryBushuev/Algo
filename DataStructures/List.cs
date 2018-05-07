@@ -17,18 +17,22 @@ namespace DataStructures
             _items = new T[capacity];
         }
 
+        private void CheckIndex(int index)
+        {
+            if (index < 0 || index >= _size)
+                throw new ArgumentOutOfRangeException(nameof(index));
+        }
+
         public T this[int index]
         {
             get
             {
-                if (index >= _size)
-                    throw new ArgumentOutOfRangeException(nameof(index));
+                CheckIndex(index);
                 return _items[index];
             }
             set
             {
-                if (index >= _size)
-                    throw new ArgumentOutOfRangeException(nameof(index));
+                CheckIndex(index);
                 _items[index] = value;
             }
         }
@@ -55,17 +59,17 @@ namespace DataStructures
             return Array.IndexOf(_items, item) >= 0;
         }
 
+        public int IndexOf(T item)
+        {
+            return Array.IndexOf(_items, item);
+        }
+
         public void CopyTo(T[] array, int arrayIndex)
         {
             if (array is null)
                 throw new ArgumentNullException(nameof(array));
 
             Array.Copy(_items, 0, array, arrayIndex, _size);
-        }
-
-        public int IndexOf(T item)
-        {
-            return Array.IndexOf(_items, item);
         }
 
         public void Insert(int index, T item)
@@ -94,9 +98,7 @@ namespace DataStructures
 
         public void RemoveAt(int index)
         {
-            if (index < 0 || index >= _size)
-                throw new ArgumentOutOfRangeException(nameof(index));
-
+            CheckIndex(index);
             _size--;
             Array.Copy(_items, index + 1, _items, index, _size - index);
             _items[_size] = default(T);
@@ -121,7 +123,7 @@ namespace DataStructures
             {
                 expectedCapacity <<= 1;
                 _capacity = expectedCapacity;
-                Array.Resize<T>(ref _items, (int)_capacity);
+                Array.Resize(ref _items, (int)_capacity);
             }
         }
     }

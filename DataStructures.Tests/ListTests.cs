@@ -97,5 +97,23 @@ namespace DataStructures.Tests
             //Assert
             CollectionAssert.IsEmpty(_list);
         }
+
+        [TestCase(new int[] { 0 }, 0, true)]
+        [TestCase(new int[] { 0, 1 }, 1, true)]
+        [TestCase(new int[] { 0, 1, 2 }, 2, true)]
+        [TestCase(new int[] { 0, 1, 2, 3 }, 4, false)]
+        [TestCase(new int[] { 0, 1, 2, 3 }, 6, false)]
+        public void Contains_ReturnsExpectedResult(int[] items, int valueToFind, bool expectedResult)
+        {
+            //Arrange
+            foreach (var item in items)
+            {
+                _list.Add(item);
+            }
+            //Act
+            var actualResult = _list.Contains(valueToFind);
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
