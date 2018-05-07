@@ -29,5 +29,38 @@ namespace DataStructures.Tests
             //Assert
             CollectionAssert.AreEquivalent(items, _list);
         }
+
+        [TestCase(new int[] { 0 }, 0, 0)]
+        [TestCase(new int[] { 0, 1 }, 1, 1)]
+        [TestCase(new int[] { 0, 1, 2 }, 2, 2)]
+        [TestCase(new int[] { 0, 1, 2, 3 }, 3, 3)]
+        public void IndexerGet_ShouldReturnExpectedValueByIndex(int[] items, int index, int expectedResult)
+        {
+            //Arrange
+            foreach (var item in items)
+            {
+                _list.Add(item);
+            }
+            var actualResult = _list[index];
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestCase(new int[] { 0 }, 0, 1)]
+        [TestCase(new int[] { 0, 1 }, 1, 2)]
+        [TestCase(new int[] { 0, 1, 2 }, 2, 3)]
+        [TestCase(new int[] { 0, 1, 2, 3 }, 3, 4)]
+        public void IndexerSet_ShouldContainExpectedValueByIndex(int[] items, int index, int expectedResult)
+        {
+            //Arrange
+            foreach (var item in items)
+            {
+                _list.Add(item);
+            }
+            _list[index] = expectedResult;
+            var actualResult = _list[index];
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

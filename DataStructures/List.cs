@@ -29,7 +29,7 @@ namespace DataStructures
             {
                 if (index >= _size)
                     throw new ArgumentOutOfRangeException(nameof(index));
-                this[index] = value;
+                _items[index] = value;
             }
         }
 
