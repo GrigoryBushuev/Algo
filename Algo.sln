@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnionFindTest", "UnionFindT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{3E94561B-784E-45C7-B907-E1E8647A2B7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilsTest", "UtilsTest\UtilsTest.csproj", "{06CC61AC-4569-4353-8113-362FDEA1B057}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.Tests", "Utils.Tests\Utils.Tests.csproj", "{06CC61AC-4569-4353-8113-362FDEA1B057}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures.Nonlinear.Graphs", "DataStructures.Nonlinear.Graphs\DataStructures.Nonlinear.Graphs.csproj", "{5812F5BC-94B1-4428-8061-3CEEF4F3D7B6}"
 EndProject

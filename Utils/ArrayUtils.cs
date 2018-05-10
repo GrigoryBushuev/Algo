@@ -6,6 +6,18 @@ namespace Utils
     {
         public static void Swap<T>(this T[] array, int i, int j) where T : IComparable<T>
         {
+            if (array is null)
+                throw  new ArgumentNullException(nameof(array));
+
+            if (i < 0 || i >= array.Length)
+                throw new ArgumentOutOfRangeException(nameof(i));
+
+            if (j < 0 || j >= array.Length)
+                throw new ArgumentOutOfRangeException(nameof(j));
+
+            if (i == j)
+                return;            
+
             var temp = array[i];
             array[i] = array[j];
             array[j] = temp;
