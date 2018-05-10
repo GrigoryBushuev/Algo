@@ -65,6 +65,10 @@
       <Project>{42e6d4dc-4121-4ccf-9c01-50e8d7b4d0b9}</Project>
       <Name>SortingAlgorithms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Utils\Utils.csproj">
+      <Project>{3e94561b-784e-45c7-b907-e1e8647a2b7f}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

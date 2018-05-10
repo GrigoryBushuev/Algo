@@ -58,7 +58,6 @@
     <Compile Include="ShellSort.cs" />
     <Compile Include="SortingAlgorithms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SortingUtils.cs" />
     <Compile Include="Triplicates.cs" />
   </ItemGroup>
   <ItemGroup>

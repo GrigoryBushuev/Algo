@@ -4,7 +4,27 @@ namespace Utils
 {
     public static class ArrayUtils
     {
-        public static void Swap<T>(this T[] array, int i, int j) where T : IComparable<T>
+        public static bool IsSorted<T>(this T[] array, bool ascending = true) where T : IComparable<T>
+        {
+            if (array is null)
+                throw new ArgumentNullException(nameof(array));
+
+            if (array.Length == 1)
+                return true;
+
+            var comparableValue = @ascending ? 1 : -1;
+            for (var i = 1; i < array.Length; i++)
+            {
+                var compareResult = array[i].CompareTo(array[i - 1]);
+                if (compareResult != comparableValue && compareResult != 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static void Swap<T>(this T[] array, int i, int j)
         {
             if (array is null)
                 throw  new ArgumentNullException(nameof(array));
