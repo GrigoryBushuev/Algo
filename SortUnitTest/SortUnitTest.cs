@@ -1,5 +1,4 @@
-﻿using MergeSort;
-using SortingAlgorithms;
+﻿using SortingAlgorithms;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;

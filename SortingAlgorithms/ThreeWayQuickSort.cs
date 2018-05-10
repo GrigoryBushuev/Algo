@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using SortingAlgorithms;
 using Utils;
 
-namespace MergeSort
+namespace SortingAlgorithms
 {
 	public class ThreeWayQuickSort<T> : ISortingAlgorithm<T> where T : IComparable<T>
 	{

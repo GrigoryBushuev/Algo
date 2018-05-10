@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MergeSort
+namespace SortingAlgorithms
 {
 	/// <summary>
 	/// A version of merge-sort that does not rearrange the array, 

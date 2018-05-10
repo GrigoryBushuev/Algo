@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MergeSort
+namespace SortingAlgorithms
 {
 	public class Triplicates
 	{
 
 		public List<string> GetTriplicates(List<string> firstList, List<string> secondList, List<string> thirdList)
 		{
-			var mergedList = firstList.Concat(secondList).Concat(thirdList).ToList(); 
-			
-			
+			var mergedList = firstList.Concat(secondList).Concat(thirdList).ToList(); 						
 			var sortedList = Sort(mergedList);
 			var result = new List<string>();
 			for (int i = 0; i < sortedList.Count - 2; i++)

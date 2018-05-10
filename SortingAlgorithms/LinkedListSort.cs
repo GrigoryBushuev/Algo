@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SortingAlgorithms;
-using DataStructures.Linear;
 
-namespace MergeSort
+namespace SortingAlgorithms
 {
 	public static class LinkedListSort
 	{

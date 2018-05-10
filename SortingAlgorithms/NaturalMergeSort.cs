@@ -1,11 +1,7 @@
-﻿using SortingAlgorithms;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MergeSort
+namespace SortingAlgorithms
 {
 	public class NaturalMergeSort<T> : ISortingAlgorithm<T> where T : IComparable<T>
 	{

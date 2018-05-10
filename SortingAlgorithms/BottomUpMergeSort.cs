@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SortingAlgorithms;
 
-namespace MergeSort
+namespace SortingAlgorithms
 {
 	public class BottomUpMergeSort<T> : ISortingAlgorithm<T> where T : IComparable<T>
 	{
