@@ -60,7 +60,6 @@ namespace DataStructures.Nonlinear.Graphs
             return _visited[toVertexIndex];
         }
 
-
         public IEnumerable<int> GetPathTo(int toVertexIndex)
         {
             if (!HasPathTo(toVertexIndex))

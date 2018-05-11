@@ -68,6 +68,4 @@ namespace DataStructures.Nonlinear.Graphs
             return stack;
         } 
     }
-
-
 }
