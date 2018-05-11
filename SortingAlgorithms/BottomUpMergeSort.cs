@@ -7,12 +7,15 @@ namespace SortingAlgorithms
     {
         private T[] _auxiliaryArray = null;
 
-        public void Sort(IEnumerable<T> arrayToSort)
+        public void Sort(IEnumerable<T> collection)
         {
-            if (arrayToSort is null)
-                throw new ArgumentNullException(nameof(arrayToSort));
+            if (collection is null)
+                throw new ArgumentNullException(nameof(collection));
 
-            var length = ((T[])arrayToSort).Length;
+            if (!(collection is T[] arrayToSort))
+                throw new InvalidCastException(nameof(collection));
+
+            var length = arrayToSort.Length;
             _auxiliaryArray = new T[length];
 
             //calculate size
@@ -20,7 +23,7 @@ namespace SortingAlgorithms
             {
                 //calculate lower bound
                 for (var lo = 0; lo < length - sz; lo = (sz << 1) + lo)// 0, 2, 4, 6
-                    Merge((T[])arrayToSort, lo, lo + sz - 1, Math.Min(lo + sz + sz - 1, length - 1));
+                    Merge(arrayToSort, lo, lo + sz - 1, Math.Min(lo + sz + sz - 1, length - 1));
             }
 
         }
