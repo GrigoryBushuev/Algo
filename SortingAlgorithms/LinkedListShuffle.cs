@@ -7,7 +7,7 @@ namespace SortingAlgorithms
 		public static DataStructures.Linear.LinkedListNode<T> Shuffle<T>(DataStructures.Linear.LinkedListNode<T> firstNode) where T : IComparable<T>
 		{
 			if (firstNode == null)
-				throw new ArgumentNullException();
+				throw new ArgumentNullException(nameof(firstNode));
 
 			if (firstNode.Next == null)
 				return firstNode;
@@ -75,6 +75,5 @@ namespace SortingAlgorithms
 			}
 			return slow;
 		}
-
 	}
 }

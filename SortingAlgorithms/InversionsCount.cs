@@ -6,11 +6,10 @@ namespace SortingAlgorithms
 {
 	public static class InversionsCountUtil
 	{
-
 		public static Tuple<IEnumerable<T>, int> InversionsCount<T>(this IEnumerable<T> collection) where T : IComparable<T>
 		{
-			if (collection == null)
-				throw new ArgumentNullException();
+			if (collection is null)
+				throw new ArgumentNullException(nameof(collection));
 
 			var arr = (T[])collection;
 			if (arr.Count() == 1)
@@ -21,7 +20,6 @@ namespace SortingAlgorithms
 			var inversionsCount = SplitAndCount(arr, aux, 0, arr.Count() - 1);			
 			return new Tuple<IEnumerable<T>, int>(arr, inversionsCount);
 		}
-
 
 		private static int SplitAndCount<T>(T[] arr, T[] aux, int startIndex, int endIndex) where T : IComparable<T>
 		{
@@ -36,7 +34,6 @@ namespace SortingAlgorithms
 
 			return x + y + z;
 		}
-
 
 		private static int MergeAndCount<T>(T[] arr, T[] aux, int startIndex, int endIndex, int midIndex) where T : IComparable<T>
 		{
@@ -70,10 +67,7 @@ namespace SortingAlgorithms
 					arr[k] = aux[j++];
 				}
 			}
-
 			return numOfSwaps;
 		}
-
-
 	}
 }

@@ -6,15 +6,15 @@ namespace SortingAlgorithms
 	{
 		public static DataStructures.Linear.LinkedListNode<T> Sort<T>(DataStructures.Linear.LinkedListNode<T> firstNode) where T : IComparable<T>
 		{
-			if (firstNode == null)
-				throw new ArgumentNullException();
+			if (firstNode is null)
+				throw new ArgumentNullException(nameof(firstNode));
 
 			if (firstNode.Next == null)
 				return firstNode;
 
 			var head = firstNode;
 			var leftNode = head;
-			int iterNum = 0;
+			var iterNum = 0;
 
 			while (leftNode != null)
 			{

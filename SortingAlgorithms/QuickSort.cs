@@ -4,44 +4,46 @@ using Utils;
 
 namespace SortingAlgorithms
 {
-	public class QuickSort<T> : ISortingAlgorithm<T> where T : IComparable<T>
-	{
-		private int Partition(T[] arrayToSort, int lo, int hi)
-		{
-			int partitionIndex = lo;
-			var partitionValue = arrayToSort[partitionIndex];
+    public class QuickSort<T> : ISortingAlgorithm<T> where T : IComparable<T>
+    {
+        public void Sort(IEnumerable<T> collection)
+        {
+            if (collection is null)
+                throw new ArgumentNullException(nameof(collection));
 
-			int i = lo + 1;
-			int j = hi;
+            if (!(collection is T[] arrayToSort))
+                throw new InvalidCastException(nameof(collection));
 
-			while (true)
-			{
-				while (i < hi && arrayToSort[i].CompareTo(partitionValue) <= 0) i++;
-				while (j > lo && arrayToSort[j].CompareTo(partitionValue) > 0) j--;
-				if (i >= j) break;
-				arrayToSort.Swap(i, j);
-			}
+            Sort(arrayToSort, 0, arrayToSort.Length - 1);
+        }
 
-			arrayToSort.Swap(partitionIndex, j);
-			return j;
-		}
+        private int Partition(T[] arrayToSort, int lo, int hi)
+        {
+            var partitionIndex = lo;
+            var partitionValue = arrayToSort[partitionIndex];
 
-		private void Sort(T[] arrayToSort, int lo, int hi)
-		{
-			if (lo >= hi)
-				return;
+            var i = lo + 1;
+            var j = hi;
 
-			int partitionIndex = Partition(arrayToSort, lo, hi);
-			Sort(arrayToSort, lo, partitionIndex - 1);
-			Sort(arrayToSort, partitionIndex + 1, hi);
-		}
+            while (true)
+            {
+                while (i < hi && arrayToSort[i].CompareTo(partitionValue) <= 0) i++;
+                while (j > lo && arrayToSort[j].CompareTo(partitionValue) > 0) j--;
+                if (i >= j) break;
+                arrayToSort.Swap(i, j);
+            }
+            arrayToSort.Swap(partitionIndex, j);
+            return j;
+        }
 
-		public void Sort(IEnumerable<T> sortingElements)
-		{
-			var arrayToSort = sortingElements as T[];
-			if (arrayToSort == null)
-				throw new InvalidCastException();
-			Sort(arrayToSort, 0, arrayToSort.Length - 1);
-		}
-	}
+        private void Sort(T[] arrayToSort, int lo, int hi)
+        {
+            if (lo >= hi)
+                return;
+
+            var partitionIndex = Partition(arrayToSort, lo, hi);
+            Sort(arrayToSort, lo, partitionIndex - 1);
+            Sort(arrayToSort, partitionIndex + 1, hi);
+        }
+    }
 }
