@@ -55,11 +55,12 @@
   <ItemGroup>
     <Compile Include="UnionFindTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeightedQuickUnionTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\UnionFind\UnionFind.csproj">
+    <ProjectReference Include="..\..\DynamicConnectivity\DynamicConnectivity.csproj">
       <Project>{2b6f08ad-e3f0-45cb-840e-35b3fcf9468e}</Project>
-      <Name>UnionFind</Name>
+      <Name>DynamicConnectivity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

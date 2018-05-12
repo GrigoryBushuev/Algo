@@ -1,10 +1,10 @@
-﻿namespace UnionFind
+﻿namespace DynamicConnectivity
 {
     public class QuickFind
     {
         private int[] _components;
 
-        public QuickFind (int num)
+        public QuickFind(int num)
         {
             _components = new int[num];
             for (var i = 0; i < num; i++)
@@ -13,16 +13,9 @@
             }
         }
 
-        public int[] Components => _components;
-
         public bool IsConnected(int p, int q)
         {
             return _components[p] == _components[q];
-        }
-
-        public int Find(int p)
-        {
-            return _components[p];
         }
 
         public void Union(int p, int q)
@@ -37,5 +30,9 @@
             }
         }
 
+        private int Find(int p)
+        {
+            return _components[p];
+        }
     }
 }
