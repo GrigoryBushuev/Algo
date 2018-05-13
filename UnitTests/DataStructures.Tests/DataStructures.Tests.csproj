@@ -53,7 +53,7 @@
     <Compile Include="Nonlinear\Graphs\DepthFirstSearchTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Linear\StackTest.cs" />
-    <Compile Include="Linear\QueueTest.cs" />
+    <Compile Include="Linear\LinkedQueueTest.cs" />
     <Compile Include="Nonlinear\Trees\LLRBTreeTest.cs" />
   </ItemGroup>
   <ItemGroup>

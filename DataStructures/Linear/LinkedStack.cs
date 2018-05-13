@@ -5,16 +5,15 @@ using System.Collections.Generic;
 namespace DataStructures.Linear
 {
     /// <summary>
-    /// The Queue<T> implementation is based on LinkedList<T>
+    /// The Stack<T> implementation is based on LinkedList<T>
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class Queue<T> : IEnumerable<T>
+    public class LinkedStack<T> : IEnumerable<T>
     {
         private LinkedList<T> _linkedList = new LinkedList<T>();
 
-        public void Enqueue(T data)
+        public void Push(T data)
         {
-            _linkedList.AddLast(data);
+            _linkedList.AddFirst(data);
         }
 
         public T Peek()
@@ -25,7 +24,7 @@ namespace DataStructures.Linear
             return _linkedList.First.Value;
         }
 
-        public T Dequeue()
+        public T Pop()
         {
             if (_linkedList.IsEmpty)
                 throw new InvalidOperationException();
@@ -35,9 +34,9 @@ namespace DataStructures.Linear
 
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (var node in _linkedList)
+            foreach (var item in _linkedList)
             {
-                yield return node;
+                yield return item;
             }
         }
 

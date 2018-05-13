@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DataStructures.Linear;
 
 namespace DataStructures.Nonlinear.Trees
 {
@@ -61,7 +62,7 @@ namespace DataStructures.Nonlinear.Trees
 
         public IEnumerable<RedBlackTreeNode<TKey, TValue>> LevelOrderTraversal()
         {
-            var BFSNodes = new Linear.Queue<RedBlackTreeNode<TKey, TValue>>();
+            var BFSNodes = new LinkedQueue<RedBlackTreeNode<TKey, TValue>>();
             BFSNodes.Enqueue(_root);
             foreach (var node in BFSNodes)
             {

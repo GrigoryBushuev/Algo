@@ -12,7 +12,7 @@ namespace DataStructures.Tests.Linear
         public void PushTest()
         {
             //Arrange
-            Stack<int> stack = new Stack<int>();
+            var stack = new LinkedStack<int>();
             var expectedResult = 0;
             stack.Push(expectedResult);
             //Act
@@ -25,7 +25,7 @@ namespace DataStructures.Tests.Linear
         public void PeekTest()
         {
             //Arrange
-            Stack<int> stack = new Stack<int>();
+            var stack = new LinkedStack<int>();
             var expectedResult = 0;
             stack.Push(expectedResult);
             //Act
@@ -38,7 +38,7 @@ namespace DataStructures.Tests.Linear
         public void PopTest()
         {
             //Arrange
-            Stack<int> stack = new Stack<int>();
+            var stack = new LinkedStack<int>();
             var expectedResult = 0;
             stack.Push(expectedResult);
             //Act
