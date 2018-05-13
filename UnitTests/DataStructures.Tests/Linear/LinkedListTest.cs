@@ -3,6 +3,7 @@
 namespace DataStructures.Tests.Linear
 {
     [Category("LinkedList")]
+    [SetUICulture("en-us")]
     [TestFixture]
     public class LinkedListTest
     {
@@ -60,7 +61,7 @@ namespace DataStructures.Tests.Linear
             foreach (var item in itemsToAdd)
             {
                 _linkedList.AddLast(item);
-            }            
+            }
             //Act
             _linkedList.RemoveLast();
             //Assert

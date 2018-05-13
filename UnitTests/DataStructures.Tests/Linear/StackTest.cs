@@ -5,6 +5,7 @@ namespace DataStructures.Tests.Linear
 {
     [Ignore("Rewrite")]
     [Category("Stack")]
+    [SetUICulture("en-us")]
     [TestFixture]
     public class StackTest
     {

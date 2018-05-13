@@ -1,13 +1,14 @@
-﻿using System;
+﻿using DataStructures.Nonlinear.Trees;
+using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using DataStructures.Nonlinear.Trees;
-using NUnit.Framework;
 
 namespace DataStructures.Tests.Nonlinear.Trees
 {
     [Ignore("Rewrite")]
     [Category("Left-leaning red–black tree")]
+    [SetUICulture("en-us")]
     [TestFixture]
     public class LLRBTreeTest
     {
@@ -63,7 +64,7 @@ namespace DataStructures.Tests.Nonlinear.Trees
             //Assert are red nodes
             Assert.IsTrue(result.ElementAt(3).IsRed);
             Assert.IsTrue(result.ElementAt(5).IsRed);
-            Assert.IsTrue(result.ElementAt(11).IsRed);            
+            Assert.IsTrue(result.ElementAt(11).IsRed);
         }
 
 

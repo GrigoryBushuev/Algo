@@ -3,6 +3,8 @@ using NUnit.Framework;
 
 namespace UnionFindTest
 {
+    [Category("WeightedQuickUnion")]
+    [SetUICulture("en-us")]
     [TestFixture]
     public class WeightedQuickUnionTest
     {

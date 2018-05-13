@@ -1,12 +1,12 @@
-using System;
 using DataStructures.Linear;
 using NUnit.Framework;
+using System;
 
 namespace DataStructures.Tests.Linear
 {
     [Category("List<T>")]
-    [TestFixture]
     [SetUICulture("en-us")]
+    [TestFixture]
     public class ListTests
     {
         private List<int> _list = null;
@@ -117,7 +117,7 @@ namespace DataStructures.Tests.Linear
                 _list.Add(item);
             }
             //Act
-             _list.Clear();
+            _list.Clear();
             //Assert
             CollectionAssert.IsEmpty(_list);
         }
@@ -168,7 +168,7 @@ namespace DataStructures.Tests.Linear
         [TestCase(new[] { 0 }, 0, new[] { 0 })]
         [TestCase(new[] { 0, 1 }, 1, new[] { 0, 0, 1 })]
         [TestCase(new[] { 0, 1, 2 }, 0, new[] { 0, 1, 2 })]
-        [TestCase(new[] { 0, 1, 2, 3 }, 4, new [] { 0, 0, 0, 0, 0, 1, 2, 3 })]
+        [TestCase(new[] { 0, 1, 2, 3 }, 4, new[] { 0, 0, 0, 0, 0, 1, 2, 3 })]
         public void CopyTo_ContainsExpectedItems(int[] items, int index, int[] expectedItems)
         {
             //Arrange
@@ -185,12 +185,12 @@ namespace DataStructures.Tests.Linear
 
         [Test]
         public void CopyTo_OnNullArrayParam_ThorwsArgumentNullException()
-        {            
+        {
             //Assert
             Assert.Throws<ArgumentNullException>(() => _list.CopyTo(null, 0));
         }
 
-        [TestCase(new[] { 0 }, 0, new int[]{})]
+        [TestCase(new[] { 0 }, 0, new int[] { })]
         [TestCase(new[] { 0, 1 }, 1, new[] { 0 })]
         [TestCase(new[] { 0, 1, 2 }, 0, new[] { 1, 2 })]
         [TestCase(new[] { 0, 1, 2, 3 }, 3, new[] { 0, 1, 2 })]
@@ -271,7 +271,7 @@ namespace DataStructures.Tests.Linear
         }
 
         [TestCase(new int[] { }, 0, new int[] { })]
-        [TestCase(new[] { 0 }, 0,  new int[] { })]
+        [TestCase(new[] { 0 }, 0, new int[] { })]
         [TestCase(new[] { 0, 1 }, 1, new[] { 0 })]
         public void Remove_ReturnsExpectedValue(int[] items, int itemToRemove, int[] expectedResult)
         {

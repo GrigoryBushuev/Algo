@@ -4,6 +4,7 @@ using NUnit.Framework;
 namespace DataStructures.Tests.Linear
 {
     [Category("LinkedQueue<T>")]
+    [SetUICulture("en-us")]
     [TestFixture]
     public class LinkedQueueTest
     {

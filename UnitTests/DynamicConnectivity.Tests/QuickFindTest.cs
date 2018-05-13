@@ -3,6 +3,8 @@ using NUnit.Framework;
 
 namespace UnionFindTest
 {
+    [Category("QuickFind")]
+    [SetUICulture("en-us")]
     [TestFixture]
     public class QuickFindTest
     {

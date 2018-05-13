@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-using DataStructures.Nonlinear.Graphs;
+﻿using DataStructures.Nonlinear.Graphs;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace DataStructures.Tests.Nonlinear.Graphs
 {
+    [Category("DepthFirstSearch")]
+    [SetUICulture("en-us")]
     [TestFixture]
     public class DepthFirstSearchTest
     {
@@ -55,9 +57,9 @@ namespace DataStructures.Tests.Nonlinear.Graphs
             Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [TestCase(0, 4, new int[] { 0, 5, 3, 4})]
+        [TestCase(0, 4, new int[] { 0, 5, 3, 4 })]
         [TestCase(10, 4, new int[] { })]
-        [TestCase(10, 12, new int[] { 10, 9, 11, 12})]
+        [TestCase(10, 12, new int[] { 10, 9, 11, 12 })]
         public void GetPathTo_OnValidParameters_ReturnsExpectedResult(int fromVertexIndex, int toVertexIndex, IEnumerable<int> expectedPath)
         {
             //Arrange

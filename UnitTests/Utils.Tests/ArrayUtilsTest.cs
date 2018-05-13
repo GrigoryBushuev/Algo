@@ -1,9 +1,10 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using System;
 
 namespace Utils.Tests
 {
     [Category("ArrayUtils")]
+    [SetUICulture("en-us")]
     [TestFixture]
     public class ArrayUtilsTest
     {
@@ -86,9 +87,9 @@ namespace Utils.Tests
 
         [TestCase(new[] { 0 }, true, true)]
         [TestCase(new[] { 0 }, false, true)]
-        [TestCase(new []{0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, true, true)]
+        [TestCase(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, true, true)]
         [TestCase(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, false, false)]
-        [TestCase(new[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 }, false, true)]        
+        [TestCase(new[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 }, false, true)]
         [TestCase(new[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 }, true, false)]
         public void IsSorted_OnValidParam_ReturnsExpectedResult(int[] array, bool isAscendingOrder, bool expectedResult)
         {
