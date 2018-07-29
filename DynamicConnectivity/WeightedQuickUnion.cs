@@ -1,5 +1,10 @@
 ﻿namespace DynamicConnectivity
 {
+    /// <summary>
+    /// WeightenedQuickUnion keeps track of the sizes of connected components
+    /// and use these sizes in union operation to make its tree more balanced.
+    /// The union updates 
+    /// </summary>
     public class WeightedQuickUnion
     {
         private readonly int[] _components;
