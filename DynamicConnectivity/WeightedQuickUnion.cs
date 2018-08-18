@@ -40,6 +40,9 @@
         /// <param name="q"></param>
         public void Union(int p, int q)
         {
+            if (p == q)
+                return;
+
             var pRoot = Find(p);
             var qRoot = Find(q);
 
@@ -61,14 +64,14 @@
         /// <summary>
         /// Returns the root index of the searching component
         /// </summary>
-        /// <param name="p"></param>
+        /// <param name="index"></param>
         /// <returns></returns>
-        private int Find(int p)
+        private int Find(int index)
         {
-            while (_components[p] != p)
-                p = _components[p];
+            while (_components[index] != index)
+                index = _components[index];
 
-            return p;
+            return index;
         }
     }
 }
