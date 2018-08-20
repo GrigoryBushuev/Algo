@@ -8,12 +8,32 @@ namespace Utils.Tests
     [TestFixture]
     public class ArrayUtilsTest
     {
-        private int[] _array;
+        private int[] _sortedArray;
+        private int[] _unsortedArray;
 
         [SetUp]
         public void SetUp()
         {
-            _array = new[] { 11, 12, 17, 19, 23, 29, 31, 34, 40, 50, 70, 76, 81, 87, 89 };
+            _unsortedArray = new[] { 1, 2, 3, 4, 5, 17, 12, 19, 29, 23, 31, 34, 40, 50, 70, 76, 81, 87, 89 };
+            _sortedArray = new[] { 11, 12, 17, 19, 23, 29, 31, 34, 40, 50, 70, 76, 81, 87, 89 };
+        }
+
+        [Test]
+        public void IsSorted_OnSortedArray_ReturnsTrue()
+        {
+            Assert.IsTrue(_sortedArray.IsSorted());
+        }
+
+        [Test]
+        public void IsSorted_OnUnsortedArray_ReturnsFalse()
+        {
+            Assert.IsFalse(_unsortedArray.IsSorted());
+        }
+
+        [Test]
+        public void IsSorted_OnNullParam_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => ArrayUtils.IsSorted<int>(null));
         }
 
         [TestCase(11)]
@@ -32,7 +52,7 @@ namespace Utils.Tests
         public void Rank_OnValidParam_ReturnsExpectedResult(int keyToFind, int expectedResult)
         {
             //Act
-            var actualResult = _array.Rank(keyToFind);
+            var actualResult = _sortedArray.Rank(keyToFind);
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
@@ -43,7 +63,7 @@ namespace Utils.Tests
         [TestCase(2)]
         public void Rank_OnInvalidParam_ReturnsNull(int keyToFind)
         {
-            var actualResult = _array.Rank(keyToFind);
+            var actualResult = _sortedArray.Rank(keyToFind);
             Assert.IsNull(actualResult);
         }
 
@@ -53,9 +73,9 @@ namespace Utils.Tests
         public void Swap_OnValidParam_ReturnsExpectedResult(int i, int j, int[] expectedResult)
         {
             //Act
-            _array.Swap(i, j);
+            _sortedArray.Swap(i, j);
             //Assert
-            Assert.AreEqual(expectedResult, _array);
+            Assert.AreEqual(expectedResult, _sortedArray);
         }
 
         [TestCase(0, 0)]
@@ -72,7 +92,7 @@ namespace Utils.Tests
         public void Swap_OnOutOfRangeiParam_ThrowsArgumentNullException(int i, int j)
         {
             //Act, Assert
-            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => _array.Swap(i, j));
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => _sortedArray.Swap(i, j));
             Assert.That(ex.ParamName, Is.EqualTo(nameof(i)));
         }
 
@@ -81,7 +101,7 @@ namespace Utils.Tests
         public void Swap_OnOutOfRangejParam_ThrowsArgumentNullException(int i, int j)
         {
             //Act, Assert
-            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => _array.Swap(i, j));
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => _sortedArray.Swap(i, j));
             Assert.That(ex.ParamName, Is.EqualTo(nameof(j)));
         }
 
@@ -97,13 +117,6 @@ namespace Utils.Tests
             var actualResult = array.IsSorted(isAscendingOrder);
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
-        }
-
-        [Test]
-        public void IsSorted_OnNullParam_ThrowsArgumentNullException()
-        {
-            //Act, Assert
-            Assert.Throws<ArgumentNullException>(() => ArrayUtils.IsSorted<int>(null));
         }
     }
 }

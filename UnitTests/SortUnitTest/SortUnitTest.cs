@@ -35,12 +35,6 @@ namespace SortUnitTest
             "lamb"
         };
 
-        [Test]
-        public void IsSortedTest()
-        {
-            Assert.IsFalse(_arrayToSort.IsSorted());
-            Assert.IsTrue(_sortedArray.IsSorted());
-        }
 
         [Test]
         public void InsertationSortTest()
